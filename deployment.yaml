@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: humoq-fe-deployment
+  labels:
+    uri: humoq.com
+spec:
+  selector:
+    matchLabels:
+      app: humoq-fe
+      uri: humoq.com
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: humoq-fe
+        uri: humoq.com
+    spec:
+      containers:
+        - name: humoq-fe
+          image: humoq/humoq-fe:latest
+          imagePullPolicy: "Always"
+          ports:
+            - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: humoq-fe-service
+spec:
+  selector:
+    app: humoq-fe
+  type: NodePort
+  ports:
+    - name: http
+      protocol: TCP
+      nodePort: 30001
+      port: 80
+      targetPort: 3000
