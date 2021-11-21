@@ -35,7 +35,7 @@ const LINKS = [
     },
     {
         url: '/category/arcade',
-        id: 'ARCADING'
+        id: 'ARCADE'
     },
     {
         url: '/category/racing',
