@@ -5,11 +5,11 @@ module.exports = {
         localeDetection: false,
         domains: [
             {
-                domain: '***.com',
+                domain: 'humoq.com',
                 defaultLocale: 'en',
             },
             {
-                domain: '***.de',
+                domain: 'humoq.de',
                 defaultLocale: 'de',
             },
         ]
