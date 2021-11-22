@@ -29,24 +29,22 @@ const detail = ({ game }) => {
     });
     return (
         <>
-        <Meta title={`${game?.detail?.title} - `} description={`${game?.detail?.description?.substring(0, 130)}...`} />
-        <div className="humoqRow">
-            <div className="container">
-                <div className="humoqHomeWrapper">
-                    <div className={"humoqColDetailsIframe humoqCol-Iframe"}>
-                        <iframe src={game?.detail?.url} width="870" height="430" frameBorder="0" scrolling="0" />
-                    </div>
-                    {game.categories?.map((game, i) => (
-                        <Link key={i} href={`/game/${game?.slug}/`}>
-                            <a className={"humoqColDetails humoqCol-" + i}>
+            <Meta title={`${game?.detail?.title} - `} description={`${game?.detail?.description?.substring(0, 130)}...`} />
+            <div className="humoqRow">
+                <div className="container">
+                    <div className="humoqHomeWrapper">
+                        <div className={"humoqColDetailsIframe humoqCol-Iframe"}>
+                            <iframe src={game?.detail?.url} width="870" height="430" frameBorder="0" scrolling="0" />
+                        </div>
+                        {game.categories?.map((game, i) => (
+                            <a key={i} href={`/game/${game?.slug}/`} className={"humoqColDetails humoqCol-" + i}>
                                 <img alt={game?.title} src={(game?.title === "Hot Dog Bush") ? game?.images[3] : game?.images[0]} width="auto" height="100%" />
                                 <div className="humoqText">{game?.title}</div>
                             </a>
-                        </Link>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </div>
-        </div>
         </>
     )
 }

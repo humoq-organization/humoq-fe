@@ -236,7 +236,7 @@ function Header({ intl }) {
                     <div className="dataTitle">{intl?.formatMessage({ id: 'JUMP_TO' })}</div>
                     <ul>
                         {ALL_LINKS?.map(val => (
-                            <Link key={val?.url} href={val?.url}><a onClick={closeDrawer}><li>{intl?.formatMessage({id: val?.id})}</li></a></Link>
+                            <a onClick={closeDrawer} key={val?.url} href={val?.url}><li>{intl?.formatMessage({ id: val?.id })}</li></a>
                         ))}
                     </ul>
                 </div>
@@ -246,12 +246,10 @@ function Header({ intl }) {
                             <div className="dataTitle">{intl?.formatMessage({ id: 'PLAYING_TODAY' })}</div>
                             <div className="humoqBasicWrapper">
                                 {data?.map((val) => (
-                                    <Link key={val?.slug} href={`/game/${val?.slug}`}>
-                                        <a onClick={closeDrawer} className="humoqColBasic">
-                                            <img alt={val?.title} src={(val?.title === "Hot Dog Bush") ? val?.images[3] : val?.images[0]} width="auto" height="100%" />
-                                            <div className="humoqText">{val?.title}</div>
-                                        </a>
-                                    </Link>
+                                    <a key={val?.slug} href={`/game/${val?.slug}`} onClick={closeDrawer} className="humoqColBasic">
+                                        <img alt={val?.title} src={(val?.title === "Hot Dog Bush") ? val?.images[3] : val?.images[0]} width="auto" height="100%" />
+                                        <div className="humoqText">{val?.title}</div>
+                                    </a>
                                 ))}
                             </div>
                         </>
@@ -259,12 +257,10 @@ function Header({ intl }) {
                     <div className="dataTitle">{intl?.formatMessage({ id: 'RECENT_PLAYED' })}</div>
                     <div className="humoqBasicWrapper">
                         {recent?.map((val) => (
-                            <Link key={val?.slug} href={`/game/${val?.slug}`}>
-                                <a onClick={() => setDrawerState(false)} className="humoqColBasic">
-                                    <img alt={val?.title} src={(val?.title === "Hot Dog Bush") ? val?.images[3] : val?.images[0]} width="auto" height="100%" />
-                                    <div className="humoqText">{val?.title}</div>
-                                </a>
-                            </Link>
+                            <a key={val?.slug} href={`/game/${val?.slug}`} onClick={() => setDrawerState(false)} className="humoqColBasic">
+                                <img alt={val?.title} src={(val?.title === "Hot Dog Bush") ? val?.images[3] : val?.images[0]} width="auto" height="100%" />
+                                <div className="humoqText">{val?.title}</div>
+                            </a>
                         ))}
                     </div>
                 </div>
@@ -278,29 +274,29 @@ function Header({ intl }) {
 
                     <div className="humoqLeftSection">
                         <div className="humoqLogo">
-                            <Link href="/"><a><Image src={mainLogo} width="280" height="83.5" /></a></Link>
+                            <a href="/"><Image src={mainLogo} width="280" height="83.5" /></a>
                         </div>
                         <ul className="humoqMenu">
                             {LINKS.map(val => (
-                                <Link key={val?.url} href={val?.url}><a className={categoryId === val?.id?.toLowerCase() ? 'humoqActiveMenu' : null}><li>{intl?.formatMessage({id: val?.id})}</li></a></Link>
+                                <a className={categoryId === val?.id?.toLowerCase() ? 'humoqActiveMenu' : null} key={val?.url} href={val?.url}><li>{intl?.formatMessage({ id: val?.id })}</li></a>
                             ))}
                         </ul>
                     </div>
                     <ul className="humoqSearch">
-                        <li><Link href="/"><a><div className="icon-home"></div></a></Link></li>
+                        <li><a href="/"><div className="icon-home"></div></a></li>
                         <li onClick={() => setDrawerState(true)}><div className="icon-search"></div></li>
                     </ul>
                 </div>
 
                 <div className="humoqMobileMenu">
                     <ul className="humoqMenu">
-                        <Link href="/category/shooting"><a><li>{intl?.formatMessage({ id: 'SHOOTING' })}</li></a></Link>
-                        <Link href="/category/.io"><a><li>{intl?.formatMessage({ id: 'IO' })}</li></a></Link>
-                        <Link href="/category/racing"><a><li>{intl?.formatMessage({ id: 'RACING' })}</li></a></Link>
-                        <Link href="/category/girls"><a><li>{intl?.formatMessage({ id: 'GIRLS' })}</li></a></Link>
-                        <Link href="/category/sports"><a><li>{intl?.formatMessage({ id: 'SPORTS' })}</li></a></Link>
-                        <Link href="/category/action"><a><li>{intl?.formatMessage({ id: 'ACTION' })}</li></a></Link>
-                        <Link href="/category/adventure"><a><li>{intl?.formatMessage({ id: 'ADVENTURE' })}</li></a></Link>
+                        <a href="/category/shooting"><li>{intl?.formatMessage({ id: 'SHOOTING' })}</li></a>
+                        <a href="/category/.io"><li>{intl?.formatMessage({ id: 'IO' })}</li></a>
+                        <a href="/category/racing"><li>{intl?.formatMessage({ id: 'RACING' })}</li></a>
+                        <a href="/category/girls"><li>{intl?.formatMessage({ id: 'GIRLS' })}</li></a>
+                        <a href="/category/sports"><li>{intl?.formatMessage({ id: 'SPORTS' })}</li></a>
+                        <a href="/category/action"><li>{intl?.formatMessage({ id: 'ACTION' })}</li></a>
+                        <a href="/category/adventure"><li>{intl?.formatMessage({ id: 'ADVENTURE' })}</li></a>
                     </ul>
                 </div>
 
