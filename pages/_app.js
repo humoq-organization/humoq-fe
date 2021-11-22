@@ -12,7 +12,15 @@ const languages = {
 export default function MyApp({ Component, pageProps }) {
     const router = useRouter();
     const { locale, defaultLocale } = router;
-    const messages = languages[locale];
+    let settedLocale = "en";
+    if (typeof window !== 'undefined') {
+        if (window.location.origin.includes('humoq.de')) {
+            settedLocale = "de";
+        } else {
+            settedLocale = "en";
+        }
+    }
+    const messages = languages[settedLocale];
 
     return (
         <IntlProvider messages={messages} locale={locale} defaultLocale={defaultLocale}>
