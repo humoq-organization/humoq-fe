@@ -3,6 +3,17 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 import Meta from '../../../components/Meta';
 
+const openFullscreen = () => {
+    const selectIframe = document.getElementById("gameIframe");
+    if (selectIframe.requestFullscreen) {
+        selectIframe.requestFullscreen();
+    } else if (selectIframe.webkitRequestFullscreen) { /* Safari */
+        selectIframe.webkitRequestFullscreen();
+    } else if (selectIframe.msRequestFullscreen) { /* IE11 */
+        selectIframe.msRequestFullscreen();
+    }
+} 
+
 const detail = ({ game }) => {
     useEffect(() => {
         const data = JSON?.parse(localStorage?.getItem('recent'));
@@ -34,7 +45,14 @@ const detail = ({ game }) => {
                 <div className="container">
                     <div className="humoqHomeWrapper">
                         <div className={"humoqColDetailsIframe humoqCol-Iframe"}>
-                            <iframe src={game?.detail?.url} width="870" height="430" frameBorder="0" scrolling="0" />
+                            <iframe id="gameIframe" src={game?.detail?.url} width="870" height="auto" frameBorder="0" allowFullScreen scrolling="0" />
+                            <div className="iframeInfo">
+                                <div className="ifiLeft">
+                                    <span className="ifiGameImage"><img alt={game?.detail?.title} src={(game?.detail?.title === "Hot Dog Bush") ? game?.detail?.images[3] : game?.detail?.images[0]} width="auto" height="100%" /></span>
+                                    <span className="ifiGameText">{game?.detail?.title}</span>
+                                </div>
+                                <div className="ifiRight" onClick={openFullscreen}><img src="/icon-fullscreen.jpg" width="27" height="27" /></div>
+                            </div>
                         </div>
                         {game.categories?.map((game, i) => (
                             <a key={i} href={`/game/${game?.slug}/`} className={"humoqColDetails humoqCol-" + i}>
