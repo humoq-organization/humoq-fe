@@ -6,6 +6,11 @@ module.exports = withPWA({
     dest: 'public',
     disable: process.env.NODE_ENV === "development",
     runtimeCaching,
+    buildExcludes: [
+        /middleware-manifest\.json$/,
+        /_middleware.js$/,
+        /_middleware.js.map$/,
+    ],
   },
   i18n: {
     locales: ['en', 'de'],
