@@ -1,5 +1,3 @@
-const WorkboxPlugin = require('workbox-webpack-plugin');
-
   module.exports = {
     module: {
       rules: [
@@ -11,13 +9,6 @@ const WorkboxPlugin = require('workbox-webpack-plugin');
             "sass-loader",
           ],
         },
-      ],
-      plugins: [
-        new WorkboxPlugin.GenerateSW({
-          clientsClaim: true,
-          skipWaiting: true,
-          exclude: [/swagger-ui/]
-        })
       ],
     },
   };
