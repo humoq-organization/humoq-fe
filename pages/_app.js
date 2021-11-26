@@ -14,7 +14,7 @@ export default function MyApp({ Component, pageProps }) {
     const { locale, defaultLocale } = router;
     let settedLocale = "en";
     if (typeof window !== 'undefined') {
-        if (window.location.href.includes('http://localhost:3000/de')) {
+        if (window.location.origin.includes('humoq.de')) {
             settedLocale = "de";
         } else {
             settedLocale = "en";
