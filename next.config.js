@@ -1,17 +1,9 @@
 const withPWA = require('next-pwa')
-const runtimeCaching = require('next-pwa/cache')
 
 module.exports = withPWA({
   pwa: {
     dest: 'public',
     disable: process.env.NODE_ENV === "development",
-    register: true,
-    runtimeCaching,
-    buildExcludes: [
-        /middleware-manifest\.json$/,
-        /_middleware.js$/,
-        /_middleware.js.map$/,
-    ],
   },
   i18n: {
     locales: ['en', 'de'],
