@@ -7,6 +7,7 @@
     "display": "fullscreen",
     "orientation": "portrait",
     "scope": "/",
+    "id": "/",
     "start_url": "/",
     "icons": [
       {
