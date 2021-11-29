@@ -9,8 +9,21 @@ const Meta = ({title, keywords, description}) => {
             <meta name='keywords' content={keywords} />
             <meta name='description' content={description} />
             <meta charSet='utf-8' />
-            <link rel="manifest" href="/manifest.json" />
+            
+            <meta name='application-name' content='Humoq' />
+            <meta name='apple-mobile-web-app-capable' content='yes' />
+            <meta name='apple-mobile-web-app-status-bar-style' content='default' />
+            <meta name='apple-mobile-web-app-title' content='Humoq' />
+            <meta name='description' content='Play free online games: arcade games, puzzle games, sports games, shooting games, and more.' />
+            <meta name='format-detection' content='telephone=no' />
+            <meta name='mobile-web-app-capable' content='yes' />
+
+            <link rel='apple-touch-icon' href='/icons/apple-touch-icon.png' />
             <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+            <link rel='apple-touch-icon' sizes='152x152' href='/icons/favicon-152x152.png' />
+            <link rel='apple-touch-icon' sizes='167x167' href='/icons/favicon-167x167.png' />
+            
+            <link rel="manifest" href="/manifest.json" />
             <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
             <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
             <link rel='icon' href='/favicon.ico' />
