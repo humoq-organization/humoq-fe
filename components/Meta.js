@@ -10,11 +10,12 @@ const Meta = ({title, keywords, description}) => {
             <meta name='description' content={description} />
             <meta charSet='utf-8' />
             <link rel="manifest" href="/manifest.json" />
-            <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+            <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
             <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
             <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
             <link rel='icon' href='/favicon.ico' />
             <meta name="theme-color" content="#005fd7" />
+            <meta name="google-site-verification" content="HC-OFVg-Qhmu0ZfReutqPBfqf5Rh3zivvoGZZ8wX4I0" />
         </Head>
     )
 

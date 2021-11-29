@@ -1,6 +1,7 @@
 {
     "name": "Humoq",
     "short_name": "Humoq",
+    "description": "Play free online games: arcade games, puzzle games, sports games, shooting games, and more.",
     "theme_color": "#ffffff",
     "background_color": "#005fd7",
     "display": "fullscreen",
@@ -48,6 +49,5 @@
         "sizes": "512x512",
         "type": "image/png"
       }
-    ],
-    "splash_pages": null
+    ]
 }
