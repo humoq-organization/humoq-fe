@@ -1,7 +1,9 @@
 import Head from 'next/head';
+import { useRouter } from 'next/router'
 
 const Meta = ({title, keywords, description}) => { 
-
+    const router = useRouter();
+    console.log(router)
     return (
         <Head>
             <title>{title}Humoq</title>
