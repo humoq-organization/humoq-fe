@@ -1,16 +1,16 @@
 import React from "react";
 
 class Robots extends React.Component {
-  static async getInitialProps({ res }) {
+  static async getInitialProps({ req, res }) {
 
-    let settedLocale = "com";
+    const domain = req.headers.host;
+
+    let settedLocale = "";
   
-    if (typeof window !== 'undefined') {
-        if (window.location.origin.includes('humoq.de')) {
-            settedLocale = "de";
-        } else {
-            settedLocale = "com";
-        }
+    if (domain == "humoq.de") {
+        settedLocale = "de";
+    } else {
+        settedLocale = "com";
     }
 
 res.setHeader("Content-Type", "text/plain");
