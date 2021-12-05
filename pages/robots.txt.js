@@ -6,7 +6,7 @@ class Robots extends React.Component {
 
 res.setHeader("Content-Type", "text/plain");
 res.write(`User-agent: *
-Allow: /
+Allow: / `);
 
 res.end();
 
