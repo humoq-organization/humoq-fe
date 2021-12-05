@@ -3,19 +3,9 @@ import { server } from '../config/index';
 
 const sitemapXml = data => {
   let projectsXML = "";
-  
-  let settedLocale = "com";
-  
-  if (typeof window !== 'undefined') {
-      if (window.location.origin.includes('humoq.de')) {
-          settedLocale = "de";
-      } else {
-          settedLocale = "com";
-      }
-  }
 
   data.map(post => {
-    const projectURL = `https://humoq.${settedLocale}/game/${post.slug}`;
+    const projectURL = `https://humoq.com/game/${post.slug}`;
     projectsXML += `
       <url>
         <loc>${projectURL}</loc>
