@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 
 const Meta = ({title, keywords, description}) => { 
     const router = useRouter();
-    console.log(router)
+    console.log(router.defaultLocale)
     return (
         <Head>
             <title>{title}Humoq</title>
