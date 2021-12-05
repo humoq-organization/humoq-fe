@@ -4,21 +4,27 @@ class Robots extends React.Component {
   static async getInitialProps({ req, res }) {
 
     const domain = req.headers.host;
-
-    let settedLocale = "";
+    console.log(`request_source ${domain}`);
   
-    if (domain == "humoq.de") {
-        settedLocale = "de";
-    } else {
-        settedLocale = "com";
-    }
+    if (domain === "humoq.de") {
 
 res.setHeader("Content-Type", "text/plain");
 res.write(`User-agent: *
 Allow: /
 
-Sitemap: https://humoq.${settedLocale}/sitemap.xml`);
+Sitemap: https://humoq.de/sitemap.xml`);
 res.end();
+
+    } else {
+
+res.setHeader("Content-Type", "text/plain");
+res.write(`User-agent: *
+Allow: /
+
+Sitemap: https://humoq.com/sitemap.xml`);
+res.end();
+
+    }
 
   }
 }
