@@ -7,7 +7,7 @@ res.setHeader("Content-Type", "text/plain");
 res.write(`User-agent: *
 Allow: /
 
-Sitemap: https://${req.headers['host']}/sitemap.xml`);
+Sitemap: https://humoq.com/sitemap.xml`);
 res.end();
 
   }
