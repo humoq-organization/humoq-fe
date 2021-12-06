@@ -31,6 +31,7 @@ const Meta = ({title, keywords, description}) => {
             <link rel='icon' href='/favicon.ico' />
             <meta name="theme-color" content="#005fd7" />
             <meta name="google-site-verification" content={(router.defaultLocale) === "de" ? "LjNr7JykcW_odEwrbWClpD9FWmak-sTuL9Bpi0smwJw" : "HC-OFVg-Qhmu0ZfReutqPBfqf5Rh3zivvoGZZ8wX4I0"} />
+            <meta name="yandex-verification" content="0e6d0a8bb6555cf6" />
         </Head>
     )
 
