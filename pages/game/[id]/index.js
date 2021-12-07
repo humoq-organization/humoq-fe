@@ -45,7 +45,7 @@ const detail = ({ game }) => {
                 <div className="container">
                     <div className="humoqHomeWrapper">
                         <div className={"humoqColDetailsIframe humoqCol-Iframe"}>
-                            <iframe id="gameIframe" src={game?.detail?.url} width="100%" height="auto" frameBorder="0" allow="fullscreen; gyroscope; accelerometer; magnetometer; vr; xr" allowFullScreen webkitallowfullscreen="true" mozallowfullscreen="true" allowvr="true" />
+                            <iframe id="gameIframe" src={game?.detail?.url} width="100%" height="auto" frameBorder="0" allowFullScreen scrolling="0" />
                             <div className="iframeInfo">
                                 <div className="ifiLeft">
                                     <span className="ifiGameImage"><img alt={game?.detail?.title} src={(game?.detail?.title === "Hot Dog Bush") ? game?.detail?.images[3] : game?.detail?.images[0]} width="auto" height="100%" /></span>
