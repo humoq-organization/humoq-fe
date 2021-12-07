@@ -31,9 +31,9 @@ const Category = ({ games, category, intl }) => {
                     )}
                     <div>
                         <div className="humoqTitle">{category} {intl?.formatMessage({ id: 'MOST_POPULAR' })}</div>
-                        <div className={`${games?.length > 20 ? "humoqHomeWrapper" : "humoqBasicWrapper"}`}>
+                        <div className="humoqBasicWrapper">
                             {games?.map((game, i) => (
-                                <a key={i} href={`/game/${game?.slug}/`} className={`${games?.length > 20 ? `humoqColDetails humoqCol-${i}` : "humoqColBasic"}`}>
+                                <a key={i} href={`/game/${game?.slug}/`} className="humoqColBasic">
                                     <img alt={game?.title} src={(game?.title === "Hot Dog Bush") ? game?.images[3] : game?.images[0]} width="auto" height="100%" />
                                     <div className="humoqText">{game?.title}</div>
                                 </a>
