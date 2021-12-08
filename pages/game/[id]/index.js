@@ -12,7 +12,7 @@ const detail = ({ game }) => {
 
     useEffect(() => {
         const handleEsc = (event) => {
-           if (event.keyCode === 27) {
+           if (event.keyCode === 27 || event.keyCode === 8) {
             const selectIframe = document.getElementById("gameIframe");
             selectIframe.classList.remove("fullscreen");
            }
@@ -22,7 +22,7 @@ const detail = ({ game }) => {
         return () => {
            window.removeEventListener('keydown', handleEsc);
         };
-    }, []);
+    });
 
     useEffect(() => {
         const data = JSON?.parse(localStorage?.getItem('recent'));
