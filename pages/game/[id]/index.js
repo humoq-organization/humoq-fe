@@ -5,16 +5,25 @@ import Meta from '../../../components/Meta';
 
 const openFullscreen = () => {
     const selectIframe = document.getElementById("gameIframe");
-    if (selectIframe.requestFullscreen) {
-        selectIframe.requestFullscreen();
-    } else if (selectIframe.webkitRequestFullscreen) { /* Safari */
-        selectIframe.webkitRequestFullscreen();
-    } else if (selectIframe.msRequestFullscreen) { /* IE11 */
-        selectIframe.msRequestFullscreen();
-    }
-} 
+    selectIframe.classList.add("fullscreen");
+}
 
 const detail = ({ game }) => {
+
+    useEffect(() => {
+        const handleEsc = (event) => {
+           if (event.keyCode === 27) {
+            const selectIframe = document.getElementById("gameIframe");
+            selectIframe.classList.remove("fullscreen");
+           }
+        };
+        window.addEventListener('keydown', handleEsc);
+     
+        return () => {
+           window.removeEventListener('keydown', handleEsc);
+        };
+    }, []);
+
     useEffect(() => {
         const data = JSON?.parse(localStorage?.getItem('recent'));
 

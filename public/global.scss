@@ -607,6 +607,15 @@ $gridSmallHeight: 70px;
         position: relative;
         background: #0279dc;
         padding-bottom: 40px;
+
+        iframe.fullscreen{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100% !important;
+            height: 100% !important;
+            z-index: 9;
+        }
         
         .iframeInfo{
             position: absolute;
