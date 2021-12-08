@@ -616,6 +616,22 @@ $gridSmallHeight: 70px;
             height: 100% !important;
             z-index: 9;
         }
+
+        .iframeClose{
+            position: fixed;
+            left: 5px;
+            top: 5px;
+            background: url(icon-previous.png) no-repeat center center;
+            background-size: cover;
+            width: 32px;
+            height: 32px;
+            display: none;
+            z-index: 10;
+            cursor: pointer;
+            &.active{
+                display: block;
+            }
+        }
         
         .iframeInfo{
             position: absolute;

@@ -5,7 +5,16 @@ import Meta from '../../../components/Meta';
 
 const openFullscreen = () => {
     const selectIframe = document.getElementById("gameIframe");
+    const closeIframe = document.getElementById("iframeClose")
     selectIframe.classList.add("fullscreen");
+    closeIframe.classList.add("active");
+}
+
+const closeFullScreen = () => {
+    const selectIframe = document.getElementById("gameIframe");
+    const closeIframe = document.getElementById("iframeClose")
+    selectIframe.classList.remove("fullscreen");
+    closeIframe.classList.remove("active");
 }
 
 const detail = ({ game }) => {
@@ -13,8 +22,7 @@ const detail = ({ game }) => {
     useEffect(() => {
         const handleEsc = (event) => {
            if (event.keyCode === 27 || event.keyCode === 8) {
-            const selectIframe = document.getElementById("gameIframe");
-            selectIframe.classList.remove("fullscreen");
+            closeFullScreen();
            }
         };
         window.addEventListener('keydown', handleEsc);
@@ -55,6 +63,7 @@ const detail = ({ game }) => {
                     <div className="humoqHomeWrapper">
                         <div className={"humoqColDetailsIframe humoqCol-Iframe"}>
                             <iframe id="gameIframe" src={game?.detail?.url} width="100%" height="auto" frameBorder="0" allowFullScreen scrolling="0" />
+                            <div id="iframeClose" className="iframeClose" onClick={closeFullScreen}></div>
                             <div className="iframeInfo">
                                 <div className="ifiLeft">
                                     <span className="ifiGameImage"><img alt={game?.detail?.title} src={(game?.detail?.title === "Hot Dog Bush") ? game?.detail?.images[3] : game?.detail?.images[0]} width="auto" height="100%" /></span>
