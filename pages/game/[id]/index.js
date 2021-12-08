@@ -74,22 +74,22 @@ const detail = ({ game }) => {
                                 </div>
                                 <div className="ifiRight">
                                     <div className="ifiFacebook ifiSocial">
-                                    <FacebookShareButton url={`https://humoq.${(router.locale == "en") ? "com" : "de"}${router.asPath}`} quote={`${game?.detail?.description}`} hashtag={'#humoq'} >
+                                    <FacebookShareButton url={`https://humoq.${(router.defaultLocale == "en") ? "com" : "de"}${router.asPath}`} quote={`${game?.detail?.description}`} hashtag={'#humoq'} >
                                         <FacebookIcon size={37} round bgStyle={{fill: "#005ed0"}} />
                                     </FacebookShareButton>
                                     </div>
                                     <div className="ifiTwitter ifiSocial">
-                                    <TwitterShareButton url={`https://humoq.${(router.locale == "en") ? "com" : "de"}${router.asPath}`} title={game?.detail?.title} >
+                                    <TwitterShareButton url={`https://humoq.${(router.defaultLocale == "en") ? "com" : "de"}${router.asPath}`} title={game?.detail?.title} >
                                         <TwitterIcon size={37} round bgStyle={{fill: "#005ed0"}} />
                                     </TwitterShareButton>
                                     </div>
                                     <div className="ifiWhatsapp ifiSocial">
-                                    <WhatsappShareButton url={`https://humoq.${(router.locale == "en") ? "com" : "de"}${router.asPath}`} title={game?.detail?.title} separator=" : " >
+                                    <WhatsappShareButton url={`https://humoq.${(router.defaultLocale == "en") ? "com" : "de"}${router.asPath}`} title={game?.detail?.title} separator=" : " >
                                         <WhatsappIcon size={37} round bgStyle={{fill: "#005ed0"}} />
                                     </WhatsappShareButton>
                                     </div>
                                     <div className="ifiPinterest ifiSocial">
-                                    <PinterestShareButton url={`https://humoq.${(router.locale == "en") ? "com" : "de"}${router.asPath}`} media={game?.detail?.images[1]} >
+                                    <PinterestShareButton url={`https://humoq.${(router.defaultLocale == "en") ? "com" : "de"}${router.asPath}`} media={game?.detail?.images[1]} >
                                         <PinterestIcon size={37} round bgStyle={{fill: "#005ed0"}} />
                                     </PinterestShareButton>
                                     </div>
