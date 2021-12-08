@@ -1,7 +1,9 @@
 import { server } from '../../../config/index';
 import Link from 'next/link';
 import { useEffect } from 'react';
+import { useRouter } from 'next/router'
 import Meta from '../../../components/Meta';
+import { FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon, WhatsappShareButton, WhatsappIcon, PinterestShareButton, PinterestIcon } from 'next-share';
 
 const openFullscreen = () => {
     const selectIframe = document.getElementById("gameIframe");
@@ -18,6 +20,7 @@ const closeFullScreen = () => {
 }
 
 const detail = ({ game }) => {
+    const router = useRouter();
 
     useEffect(() => {
         const handleEsc = (event) => {
@@ -69,7 +72,29 @@ const detail = ({ game }) => {
                                     <span className="ifiGameImage"><img alt={game?.detail?.title} src={(game?.detail?.title === "Hot Dog Bush") ? game?.detail?.images[3] : game?.detail?.images[0]} width="auto" height="100%" /></span>
                                     <span className="ifiGameText">{game?.detail?.title}</span>
                                 </div>
-                                <div className="ifiRight" onClick={openFullscreen}><img src="/icon-fullscreen.jpg" width="27" height="27" /></div>
+                                <div className="ifiRight">
+                                    <div className="ifiFacebook ifiSocial">
+                                    <FacebookShareButton url={`https://humoq.${(router.locale == "en") ? "com" : "de"}${router.asPath}`} quote={`${game?.detail?.description}`} hashtag={'#humoq'} >
+                                        <FacebookIcon size={37} round bgStyle={{fill: "#005ed0"}} />
+                                    </FacebookShareButton>
+                                    </div>
+                                    <div className="ifiTwitter ifiSocial">
+                                    <TwitterShareButton url={`https://humoq.${(router.locale == "en") ? "com" : "de"}${router.asPath}`} title={game?.detail?.title} >
+                                        <TwitterIcon size={37} round bgStyle={{fill: "#005ed0"}} />
+                                    </TwitterShareButton>
+                                    </div>
+                                    <div className="ifiWhatsapp ifiSocial">
+                                    <WhatsappShareButton url={`https://humoq.${(router.locale == "en") ? "com" : "de"}${router.asPath}`} title={game?.detail?.title} separator=" : " >
+                                        <WhatsappIcon size={37} round bgStyle={{fill: "#005ed0"}} />
+                                    </WhatsappShareButton>
+                                    </div>
+                                    <div className="ifiPinterest ifiSocial">
+                                    <PinterestShareButton url={`https://humoq.${(router.locale == "en") ? "com" : "de"}${router.asPath}`} media={game?.detail?.images[1]} >
+                                        <PinterestIcon size={37} round bgStyle={{fill: "#005ed0"}} />
+                                    </PinterestShareButton>
+                                    </div>
+                                    <div className="ifiFullScreen" onClick={openFullscreen}><img src="/icon-fullscreen.png" width="35" height="35" /></div>
+                                </div>
                             </div>
                         </div>
                         {game.categories?.map((game, i) => (
