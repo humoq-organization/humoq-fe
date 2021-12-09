@@ -1,9 +1,12 @@
 import React from 'react';
 import { server } from '../config/index';
 import Link from 'next/link';
+import Meta from '../components/Meta';
 
 export default function Index({ games }) {
     return (
+        <>
+        <Meta />
         <div className="humoqRow">
             <div className="container">
                 <div className="humoqHomeWrapper">
@@ -16,7 +19,7 @@ export default function Index({ games }) {
                 </div>
             </div>
         </div>
-
+        </>
     )
 }
 
