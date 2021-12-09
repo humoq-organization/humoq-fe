@@ -128,6 +128,12 @@ const detail = ({ game }) => {
                     </div>
                 </div>
             </div>
+            <div className="humoqRow gameDetails">
+                <div className="container">
+                        <h1>{game?.detail?.title}</h1>
+                        <p>{game?.detail?.description}</p>
+                </div>
+            </div>
         </>
     )
 }
