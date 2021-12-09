@@ -268,7 +268,7 @@ function Header({ intl }) {
                     <div className="footerImage" />
                 </div>
             </Drawer>
-            <div className="humoqFixedMenu" style={{ backgroundColor: scrollY > 0 ? 'rgba(0, 0, 0, 0.6)' : 'transparent', padding: scrollY > 0 ? '5px 0' : '15px 0' }}>
+            <div className="humoqFixedMenu" style={{ backgroundColor: scrollY > 0 ? 'rgba(0, 69, 156, 0.9)' : 'transparent', padding: scrollY > 0 ? '5px 0' : '15px 0' }}>
 
                 <div className="container">
 
