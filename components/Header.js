@@ -220,6 +220,7 @@ function Header({ intl }) {
 
     return (
         <>
+        {console.log(router)}
             <Drawer ref={drawerRef} onClickClose={closeDrawer} active={drawerState}>
                 <div className="drawerCloseIcon">
                     <img src="/close.svg" onClick={closeDrawer} />
