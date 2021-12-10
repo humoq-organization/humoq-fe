@@ -1,8 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import Link from 'next/link'
-import Image from "next/image"
 import { useRouter } from "next/router";
-import mainLogo from '../public/logo.png';
 import Drawer from "./Drawer/Drawer";
 import { server } from "../config";
 import { injectIntl } from 'react-intl';
@@ -274,7 +271,7 @@ function Header({ intl }) {
 
                     <div className="humoqLeftSection">
                         <div className="humoqLogo">
-                            <a href="/"><Image src={mainLogo} width="280" height="83.5" /></a>
+                            <a href="/"><img src={`https://humoq.${(router.defaultLocale == "en") ? "com" : "de"}/logo.png`} width="280" height="83.5" alt="Humoq" /></a>
                         </div>
                         <ul className="humoqMenu">
                             {LINKS.map(val => (
