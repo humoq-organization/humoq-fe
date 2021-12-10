@@ -1,25 +1,11 @@
-import { server } from '../../../config/index';
-import Link from 'next/link';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router'
+import { server } from '../../../config/index';
 import Meta from '../../../components/Meta';
 import { FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon, WhatsappShareButton, WhatsappIcon, PinterestShareButton, PinterestIcon } from 'next-share';
 
-const openFullscreen = () => {
-    const selectIframe = document.getElementById("gameIframe");
-    const closeIframe = document.getElementById("iframeClose")
-    selectIframe.classList.add("fullscreen");
-    closeIframe.classList.add("active");
-}
+export default function Detail({ game }) {
 
-const closeFullScreen = () => {
-    const selectIframe = document.getElementById("gameIframe");
-    const closeIframe = document.getElementById("iframeClose")
-    selectIframe.classList.remove("fullscreen");
-    closeIframe.classList.remove("active");
-}
-
-const detail = ({ game }) => {
     const router = useRouter();
 
     useEffect(() => {
@@ -58,6 +44,21 @@ const detail = ({ game }) => {
             localStorage.setItem('recent', JSON.stringify([game?.detail]));
         }
     });
+
+    const openFullscreen = () => {
+        const selectIframe = document.getElementById("gameIframe");
+        const closeIframe = document.getElementById("iframeClose")
+        selectIframe.classList.add("fullscreen");
+        closeIframe.classList.add("active");
+    }
+    
+    const closeFullScreen = () => {
+        const selectIframe = document.getElementById("gameIframe");
+        const closeIframe = document.getElementById("iframeClose")
+        selectIframe.classList.remove("fullscreen");
+        closeIframe.classList.remove("active");
+    }
+
     return (
         <>
             <Meta title={`${game?.detail?.title} - `} description={`${game?.detail?.description?.substring(0, 130)}...`} />
@@ -149,5 +150,3 @@ export const getServerSideProps = async (context) => {
         },
     }
 }
-
-export default detail;
