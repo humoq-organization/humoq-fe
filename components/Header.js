@@ -220,7 +220,6 @@ function Header({ intl }) {
 
     return (
         <>
-        {console.log(router)}
             <Drawer ref={drawerRef} onClickClose={closeDrawer} active={drawerState}>
                 <div className="drawerCloseIcon">
                     <img src="/close.svg" onClick={closeDrawer} />
@@ -272,7 +271,7 @@ function Header({ intl }) {
 
                     <div className="humoqLeftSection">
                         <div className="humoqLogo">
-                            <a href="/"><img src={`https://humoq.${(router.defaultLocale == "en") ? "com" : "de"}/logo.png`} width="280" height="83.5" alt="Humoq" /></a>
+                            <a href="/"><img src="/logo.png" width="280" height="83.5" alt="Humoq" /></a>
                         </div>
                         <ul className="humoqMenu">
                             {LINKS.map(val => (
