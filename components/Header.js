@@ -287,13 +287,9 @@ function Header({ intl }) {
 
                 <div className="humoqMobileMenu">
                     <ul className="humoqMenu">
-                        <a href="/category/shooting"><li>{intl?.formatMessage({ id: 'SHOOTING' })}</li></a>
-                        <a href="/category/.io"><li>{intl?.formatMessage({ id: 'IO' })}</li></a>
-                        <a href="/category/racing"><li>{intl?.formatMessage({ id: 'RACING' })}</li></a>
-                        <a href="/category/girls"><li>{intl?.formatMessage({ id: 'GIRLS' })}</li></a>
-                        <a href="/category/sports"><li>{intl?.formatMessage({ id: 'SPORTS' })}</li></a>
-                        <a href="/category/action"><li>{intl?.formatMessage({ id: 'ACTION' })}</li></a>
-                        <a href="/category/adventure"><li>{intl?.formatMessage({ id: 'ADVENTURE' })}</li></a>
+                        {LINKS.map(val => (
+                            <a className={categoryId === val?.id?.toLowerCase() ? 'humoqActiveMenu' : null} key={val?.url} href={val?.url}><li>{intl?.formatMessage({ id: val?.id })}</li></a>
+                        ))}
                     </ul>
                 </div>
 
