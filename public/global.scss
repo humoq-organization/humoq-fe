@@ -1,5 +1,4 @@
-$color: #555;
-
+/*FONT FACE*/
 @font-face {
     font-family: 'YouBlockhead';
     src: url('YouBlockhead.eot');
@@ -10,6 +9,92 @@ $color: #555;
     font-weight: normal;
     font-style: normal;
 }
+
+/*MEDIA SCREEN VARIABLES*/
+
+/*media screen*/
+$screen-desktopWide: 1920px;
+$screen-desktop: 1440px;
+$screen-tablet: 1080px;
+$screen-mobileWide: 768px;
+$screen-mobile: 500px;
+
+/*normal*/
+$gridWidth: 100px;
+$gridHeight: 100px;
+$gridGap: 15px;
+$gridCol: 16;
+$gridGtc: $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth;
+
+/*screen-desktopWide*/
+$gridColBigScreen: 12;
+$gridDwGtc: $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth;
+
+/*screen-desktop*/
+$gridColMediumScreen: 9;
+$gridMediumWidth: 100px;
+$gridMediumHeight: 100px;
+$gridDGtc: $gridMediumWidth $gridMediumWidth $gridMediumWidth $gridMediumWidth $gridMediumWidth $gridMediumWidth $gridMediumWidth $gridMediumWidth $gridMediumWidth;
+
+/*screen-tablet*/
+$gridColLowMediumScreen: 6;
+$gridLowMediumWidth: 95px;
+$gridLowMediumHeight: 95px;
+$gridTGtc: $gridLowMediumWidth $gridLowMediumWidth $gridLowMediumWidth $gridLowMediumWidth $gridLowMediumWidth $gridLowMediumWidth;
+
+/*screen-mobileWide*/
+$gridColSmallScreen: 4;
+$gridSmallWidth: 90px;
+$gridSmallHeight: 90px;
+$gridMwGtc: $gridSmallWidth $gridSmallWidth $gridSmallWidth $gridSmallWidth;
+
+/*screen-mobile*/
+$gridColSmallMiniScreen: 3;
+$gridSmallMiniWidth: 90px;
+$gridSmallMiniHeight: 90px;
+$gridMGtc: $gridSmallMiniWidth $gridSmallMiniWidth $gridSmallMiniWidth;
+
+/*END MEDIA SCREEN VARIABLES*/
+
+
+/*MIXIN*/
+
+@mixin respond($media) {
+    @if $media==desktopWide {
+        @media only screen and (max-width: $screen-desktopWide) {
+            @content;
+        }
+    }
+    @if $media==desktop {
+        @media only screen and (max-width: $screen-desktop) {
+            @content;
+        }
+    }
+    @if $media==tablet {
+        @media only screen and (max-width: $screen-tablet) {
+            @content;
+        }
+    }
+    @if $media==mobileWide {
+        @media only screen and (max-width: $screen-mobileWide) {
+            @content;
+        }
+    }
+    @if $media==mobile {
+        @media only screen and (max-width: $screen-mobile) {
+            @content;
+        }
+    }
+}
+
+@mixin gridRowCol($rowStart, $rowEnd, $colStart, $colEnd) {
+    @if $rowStart{grid-row-start: $rowStart;}
+    @if $rowEnd{grid-row-end: $rowEnd;}
+    @if $colStart{grid-column-start: $colStart;}
+    @if $colEnd{grid-column-end: $colEnd;}
+}
+
+/*MIXIN END */
 
 body,
 html {
@@ -24,7 +109,7 @@ body {
 html {
     background: url(bg.jpg) no-repeat center center fixed #025bd9;
     background-size: cover;
-    @media screen and (max-width:700px) {
+    @include respond(mobileWide){
         background: url(mobile-bg.png) no-repeat center center fixed #025bd9;
         background-size: cover;
     }
@@ -47,29 +132,6 @@ ul li {
     box-sizing: border-box;
 }
 
-$gridWidth: 100px;
-$gridHeight: 100px;
-$gridGap: 10px;
-$gridCol: 16;
-
-/*1800*/
-$gridColBigScreen: 12;
-
-/*1400*/
-$gridColMediumScreen: 10;
-$gridMediumWidth: 90px;
-$gridMediumHeight: 90px;
-
-/*1060*/
-$gridColLowMediumScreen: 7;
-$gridLowMediumWidth: 80px;
-$gridLowMediumHeight: 80px;
-
-/*700*/
-$gridColSmallScreen: 4;
-$gridSmallWidth: 70px;
-$gridSmallHeight: 70px;
-
 .humoqRow {
     position: relative;
     display: block;
@@ -82,7 +144,7 @@ $gridSmallHeight: 70px;
     color: #fff;
     margin: 50px 0 20px 0;
     text-transform: capitalize;
-    @media screen and (max-width:1060px) {
+    @include respond(tablet){
         font-size: 16px;
     }
 }
@@ -108,8 +170,12 @@ $gridSmallHeight: 70px;
         align-items: center;
         padding-right: 15px;
         .humoqLogo img{
-            @media screen and (max-width:1400px) {
+            @include respond(desktop){
                 width: 200px;
+                height: auto;
+            }
+            @include respond(mobile){
+                width: 180px;
                 height: auto;
             }
         }
@@ -132,15 +198,15 @@ $gridSmallHeight: 70px;
             }
         }
 
-        @media screen and (max-width:1060px) {
+        @include respond(tablet){
             display: none;
         }
 
-        @media screen and (max-width:1800px) {
+        @include respond(desktopWide){
             font-size: 12px
         }
 
-        @media screen and (max-width:1400px) {
+        @include respond(desktop){
             font-size: 10px;
             padding: 10px 10px;
             height: 55px;
@@ -162,7 +228,7 @@ $gridSmallHeight: 70px;
             transition: all 0.34s ease;
             box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.25);
 
-            @media screen and (max-width:1400px) {
+            @include respond(desktop){
                 padding: 10px 6px;
             }
 
@@ -180,8 +246,12 @@ $gridSmallHeight: 70px;
         display: none;
         background-color: rgba(255, 255, 255, 0.35);
 
-        @media screen and (max-width:1060px) {
+        @include respond(tablet){
             display: block;
+        }
+
+        @include respond(mobileWide){
+            display: none;
         }
 
         .humoqMenu {
@@ -196,7 +266,7 @@ $gridSmallHeight: 70px;
                 margin: 0 5px;
             }
 
-            @media screen and (max-width:680px) {
+            @include respond(mobileWide){
                 justify-content: left;
             }
         }
@@ -213,11 +283,11 @@ $gridSmallHeight: 70px;
         padding: 0 10px;
         box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.25);
 
-        @media screen and (max-width:1400px) {
+        @include respond(desktop){
             height: 55px;
         }
 
-        @media screen and (max-width:700px) {
+        @include respond(mobileWide){
             height: 50px;
         }
 
@@ -232,7 +302,7 @@ $gridSmallHeight: 70px;
                 background-size: contain;
                 background-repeat: no-repeat;
 
-                @media screen and (max-width:1400px) {
+                @include respond(desktop){
                     width: 26.5px;
                     height: 26.5px;
                 }
@@ -245,7 +315,7 @@ $gridSmallHeight: 70px;
                 background-size: contain;
                 background-repeat: no-repeat;
 
-                @media screen and (max-width:1400px) {
+                @include respond(desktop){
                     width: 26.5px;
                     height: 26.5px;
                 }
@@ -257,22 +327,109 @@ $gridSmallHeight: 70px;
 .container {
     margin: 0 auto;
     position: relative;
-    width: ($gridWidth * $gridCol) + ($gridGap * $gridCol) - 10;
+    width: ($gridWidth * $gridCol) + ($gridGap * $gridCol) - $gridGap;
 
-    @media screen and (max-width:1800px) {
-        width: ($gridWidth * $gridColBigScreen) + ($gridGap * $gridColBigScreen) - 10;
+    @include respond(desktopWide){
+        width: ($gridWidth * $gridColBigScreen) + ($gridGap * $gridColBigScreen) - $gridGap;
     }
 
-    @media screen and (max-width:1400px) {
-        width: ($gridMediumWidth * $gridColMediumScreen) + ($gridGap * $gridColMediumScreen) - 10;
+    @include respond(desktop){
+        width: ($gridMediumWidth * $gridColMediumScreen) + ($gridGap * $gridColMediumScreen) - $gridGap;
     }
 
-    @media screen and (max-width:1060px) {
-        width: ($gridLowMediumWidth * $gridColLowMediumScreen) + ($gridGap * $gridColLowMediumScreen) - 10;
+    @include respond(tablet){
+        width: ($gridLowMediumWidth * $gridColLowMediumScreen) + ($gridGap * $gridColLowMediumScreen) - $gridGap;
     }
 
-    @media screen and (max-width:700px) {
-        width: ($gridSmallWidth * $gridColSmallScreen) + ($gridGap * $gridColSmallScreen) - 10;
+    @include respond(mobileWide){
+        width: ($gridSmallWidth * $gridColSmallScreen) + ($gridGap * $gridColSmallScreen) - $gridGap;
+    }
+
+    @include respond(mobile){
+        width: ($gridSmallMiniWidth * $gridColSmallMiniScreen) + ($gridGap * $gridColSmallMiniScreen) - $gridGap;
+    }
+}
+
+.mobileHomeMenu{
+    display: none;
+    @include gridRowCol(1, 4, 1, 2);
+
+    .humoqMenu{
+        width: 100%;
+    }
+
+    &.menuDetail{
+        @include gridRowCol(6, 9, 1, 3);
+
+        @include respond(mobile){
+            @include gridRowCol(5, 8, 1, 2);    
+        }
+
+    }
+
+    &.menuCategory{
+        @include respond(mobileWide){
+            position: sticky;
+            left: 0;
+            top: 95px;
+            width: 95px;
+            z-index: 2;
+
+            @include gridRowCol(inherit, inherit, inherit, inherit);
+
+            @include respond(mobile){
+                @include gridRowCol(inherit, inherit, inherit, inherit);    
+            }
+       }
+
+    }
+
+    @include respond(mobileWide){
+        display: flex;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    li {
+        position: relative;
+        color: #00459c;
+        min-width: 100%;
+        text-align: center;
+        font-size: 10px;
+        padding: 10px 3px;
+        background: #fff;
+        margin-bottom: 8px;
+        border-radius: 10px;
+        border-top-left-radius: 0;
+        transition: all 0.34s ease;
+        box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.25);
+
+        &:hover {
+            background: #00459c;
+            color: #fff;
+        }
+    }
+
+    .humoqActiveMenu {
+        li {
+            background-color: #fee043;
+        }
+    }
+}
+
+.mobileCategoryScope{
+    @include respond(mobileWide){
+        width: 100%;
+        padding-left: 110px;
+        margin-top: -310px;
+    }
+    .humoqTitle{
+        @include respond(mobileWide){
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
     }
 }
 
@@ -280,27 +437,32 @@ $gridSmallHeight: 70px;
 .humoqHomeWrapper {
     display: grid;
     width: 100%;
-    grid-template-columns: $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth;
+    grid-template-columns: $gridGtc;
     grid-auto-rows: $gridHeight;
     grid-gap: $gridGap;
 
-    @media screen and (max-width:1800px) {
-        grid-template-columns: $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth $gridWidth;
+    @include respond(desktopWide){
+        grid-template-columns: $gridDwGtc;
     }
 
-    @media screen and (max-width:1400px) {
-        grid-template-columns: $gridMediumWidth $gridMediumWidth $gridMediumWidth $gridMediumWidth $gridMediumWidth $gridMediumWidth $gridMediumWidth $gridMediumWidth $gridMediumWidth $gridMediumWidth;
+    @include respond(desktop){
+        grid-template-columns: $gridDGtc;
         grid-auto-rows: $gridMediumHeight;
     }
 
-    @media screen and (max-width:1060px) {
-        grid-template-columns: $gridLowMediumWidth $gridLowMediumWidth $gridLowMediumWidth $gridLowMediumWidth $gridLowMediumWidth $gridLowMediumWidth $gridLowMediumWidth;
+    @include respond(tablet){
+        grid-template-columns: $gridTGtc;
         grid-auto-rows: $gridLowMediumHeight;
     }
 
-    @media screen and (max-width:700px) {
-        grid-template-columns: $gridSmallWidth $gridSmallWidth $gridSmallWidth $gridSmallWidth;
+    @include respond(mobileWide){
+        grid-template-columns: $gridMwGtc;
         grid-auto-rows: $gridSmallHeight;
+    }
+
+    @include respond(mobile){
+        grid-template-columns: $gridMGtc;
+        grid-auto-rows: $gridSmallMiniHeight;
     }
 
     .humoqCol {
@@ -329,7 +491,7 @@ $gridSmallHeight: 70px;
             z-index: 5;
             background: rgba(0, 0, 0, 0.5);
             transition: all 0.34s ease;
-            @media screen and (max-width:1060px) {
+            @include respond(tablet){
                 font-size: 7px;
                 line-height: 1.2;
             }
@@ -349,179 +511,219 @@ $gridSmallHeight: 70px;
         }
 
         &.humoqCol-0 {
-            grid-row: 1 / 3;
-            grid-column: 3 / 5;
+            @include gridRowCol(1, 4, 3, 6);
             font-size: 16px;
+            @include respond(desktop){
+                @include gridRowCol(1, 4, 2, 5);
+            }
+            @include respond(tablet){
+                @include gridRowCol(1, 3, 2, 4);
+            }
+            @include respond(mobileWide){
+                @include gridRowCol(1, 3, 2, 4);
+            }
         }
 
         &.humoqCol-1 {
-            grid-row: 4 / 7;
-            grid-column: 6 / 9;
+            @include gridRowCol(1, 3, 8, 10);
             font-size: 22px;
-
-            @media screen and (max-width:1060px) {
-                grid-row: 4 / 6;
-                grid-column: 5 / 7;
+            @include respond(desktop){
+                @include gridRowCol(false, false, 6, 8);
             }
-
-            @media screen and (max-width:700px) {
-                grid-column: 3 / 5;
+            @include respond(tablet){
+                @include gridRowCol(1, 3, 5, 7);
             }
-
+            @include respond(mobileWide){
+                @include gridRowCol(3, 5, 3, 5);
+            }
+            @include respond(mobile){
+                @include gridRowCol(4, 6, 2, 4);
+            }
         }
 
         &.humoqCol-2 {
-            grid-row: 2 / 4;
-            grid-column: 13 / 15;
-
-            @media screen and (max-width:1800px) {
-                grid-column: 9 / 11;
+            @include gridRowCol(1, 3, 10, 12);
+            @include respond(desktopWide){
+                @include gridRowCol(false, false, 10, 12);
             }
-
-            @media screen and (max-width:1400px) {
-                grid-column: 8 / 10;
-                grid-row: 1 / 3;
+            @include respond(desktop){
+                @include gridRowCol(false, false, 8, 10);
             }
-
-            @media screen and (max-width:1060px) {
-                grid-row: 5 / 8;
-                grid-column: 1 / 4;
+            @include respond(tablet){
+                @include gridRowCol(4, 6, 1, 3);
             }
-
-            @media screen and (max-width:700px) {
-                grid-row: 7 / 10;
+            @include respond(mobileWide){
+                @include gridRowCol(6, 8, 1, 3);
             }
-
         }
 
         &.humoqCol-3 {
-            grid-row: 8 / 10;
-            grid-column: 12 / 14;
-
-            @media screen and (max-width:1800px) {
-                grid-column: 10 / 12;
+            @include gridRowCol(1, 4, 12, 15);
+            @include respond(desktopWide){
+                @include gridRowCol(4, 6, 1, 3);
             }
-
-            @media screen and (max-width:1400px) {
-                grid-column: 7 / 9;
+            @include respond(tablet){
+                @include gridRowCol(3, 5, 4, 6);
             }
-
-            @media screen and (max-width:1060px) {
-                grid-row: 8 / 10;
-                grid-column: 4 / 6;
+            @include respond(mobileWide){
+                @include gridRowCol(6, 8, 3, 5);
             }
-
-            @media screen and (max-width:700px) {
-                grid-row: 10 / 12;
-                grid-column: 3 / 5;
+            @include respond(mobile){
+                @include gridRowCol(8, 10, 2, 4);
             }
-
         }
-
+        
         &.humoqCol-4 {
-            grid-row: 4 / 6;
-            grid-column: 1 / 3;
-
-            @media screen and (max-width:1060px) {
-                grid-row: 11 / 14;
-                grid-column: 4 / 7;
+            @include gridRowCol(4, 6, 1, 3);
+            @include respond(desktopWide){
+                @include gridRowCol(4, 6, 9, 11);
             }
-
-            @media screen and (max-width:700px) {
-                grid-row: 12 / 14;
-                grid-column: 1 / 3;
+            @include respond(desktop){
+                @include gridRowCol(4, 6, 3, 5);
             }
-
+            @include respond(tablet){
+                @include gridRowCol(5, 7, 4, 6);
+            }
+            @include respond(mobileWide){
+                @include gridRowCol(9, 11, 2, 4);
+            }
+            @include respond(mobile){
+                @include gridRowCol(11, 13, 2, 4);
+            }
         }
 
         &.humoqCol-5 {
-            grid-row: 9 / 11;
-            grid-column: 3 / 5;
-
-            @media screen and (max-width:1060px) {
-                grid-row: 16 / 18;
-                grid-column: 2 / 4;
+            @include gridRowCol(4, 7, 6, 9);
+            @include respond(desktop){
+                @include gridRowCol(4, 7, 5, 8);
             }
-
+            @include respond(tablet){
+                @include gridRowCol(7, 9, 2, 4);
+            }
+            @include respond(mobileWide){
+                @include gridRowCol(12, 14, 1, 3);
+            }
+            @include respond(mobile){
+                @include gridRowCol(13, 15, 1, 3);
+            }
         }
 
         &.humoqCol-6 {
-            grid-row: 11 / 13;
-            grid-column: 9 / 11;
-
-            @media screen and (max-width:1400px) {
-                grid-column: 8 / 10;
+            @include gridRowCol(4, 6, 11, 13);
+            @include respond(desktop){
+                @include gridRowCol(4, 6, 8, 10);
             }
 
-            @media screen and (max-width:1060px) {
-                grid-row: inherit;
-                grid-column: inherit;
+            @include respond(tablet){
+                @include gridRowCol(8, 10, 5, 7);
             }
-
+            @include respond(mobileWide){
+                @include gridRowCol(14, 16, 3, 5);
+            }
+            @include respond(mobile){
+                @include gridRowCol(16, 18, 2, 4);
+            }
         }
 
         &.humoqCol-7 {
-            grid-row: 13 / 16;
-            grid-column: 4 / 7;
-
-            @media screen and (max-width:1400px) {
-                grid-column: 2 / 5;
+            @include gridRowCol(6, 8, 11, 13);
+            @include respond(desktop){
+                @include gridRowCol(6, 8, 8, 10);
             }
-
-            @media screen and (max-width:1060px) {
-                grid-row: inherit;
-                grid-column: inherit;
+            @include respond(tablet){
+                @include gridRowCol(9, 11, 1, 3);
             }
-
+            @include respond(mobileWide){
+                @include gridRowCol(inherit, inherit, inherit, inherit);
+            }
         }
 
         &.humoqCol-8 {
-            grid-row: 12 / 14;
-            grid-column: 13 / 15;
-
-            @media screen and (max-width:1800px) {
-                grid-row: 13/15;
-                grid-column: 11/13;
+            @include gridRowCol(5, 7, 15, 17);
+            @include respond(desktopWide){
+                @include gridRowCol(9, 11, 11, 13);
             }
-
-            @media screen and (max-width:1400px) {
-                grid-row: 14/16;
-                grid-column: 7/9;
+            @include respond(desktop){
+                @include gridRowCol(false, false, 4, 6);
             }
-
-            @media screen and (max-width:1060px) {
-                grid-row: inherit;
-                grid-column: inherit;
+            @include respond(tablet){
+                @include gridRowCol(11, 13, 2, 4);
             }
-
-        }
-
-        &.humoqCol-9 {
-            grid-row: 16 / 18;
-            grid-column: 10 / 12;
-
-            @media screen and (max-width:1400px) {
-                grid-row: 20/22;
-                grid-column: 5/7;
+            @include respond(mobileWide){
+                @include gridRowCol(inherit, inherit, inherit, inherit);
             }
-
-            @media screen and (max-width:1060px) {
-                grid-row: inherit;
-                grid-column: inherit;
-            }
-
         }
 
         &.humoqCol-10 {
-            grid-row: 18 / 20;
-            grid-column: 1 / 3;
-
-            @media screen and (max-width:1060px) {
-                grid-row: inherit;
-                grid-column: inherit;
+            @include gridRowCol(6, 9, 2, 5);
+            @include respond(tablet){
+                @include gridRowCol(11, 13, 4, 6);
             }
-
+            @include respond(mobileWide){
+                @include gridRowCol(inherit, inherit, inherit, inherit);
+            }
         }
+
+        &.humoqCol-9 {
+            @include gridRowCol(8, 10, 7, 9);
+            @include respond(desktop){
+                @include gridRowCol(8, 10, 6, 8);
+            }
+            @include respond(tablet){
+                @include gridRowCol(14, 16, 1, 3);
+            }
+            @include respond(mobileWide){
+                @include gridRowCol(inherit, inherit, inherit, inherit);
+            }
+        }
+
+        &.humoqCol-11 {
+            @include gridRowCol(8, 10, 9, 11);
+            @include respond(desktop){
+                @include gridRowCol(8, 10, 8, 10);
+            }
+            @include respond(tablet){
+                @include gridRowCol(14, 16, 5, 7);
+            }
+            @include respond(mobileWide){
+                @include gridRowCol(inherit, inherit, inherit, inherit);
+            }
+        }
+
+        &.humoqCol-12 {
+            @include gridRowCol(9, 12, 13, 16);
+            @include respond(desktopWide){
+                @include gridRowCol(12, 14, 10, 12);
+            }
+            @include respond(desktop){
+                @include gridRowCol(14, 17, 1, 4);
+            }
+            @include respond(tablet){
+                @include gridRowCol(inherit, inherit, inherit, inherit);
+            }
+        }
+
+        &.humoqCol-13 {
+            @include gridRowCol(11, 13, 1, 3);
+            @include respond(tablet){
+                @include gridRowCol(inherit, inherit, inherit, inherit);
+            }
+        }
+
+        &.humoqCol-14 {
+            @include gridRowCol(11, 13, 3, 5);
+            @include respond(tablet){
+                @include gridRowCol(inherit, inherit, inherit, inherit);
+            }
+        }
+
+        &.humoqCol-15 {
+            @include gridRowCol(11, 14, 6, 9);
+            @include respond(tablet){
+                @include gridRowCol(inherit, inherit, inherit, inherit);
+            }
+        }
+
     }
 
     .humoqColDetails {
@@ -551,7 +753,7 @@ $gridSmallHeight: 70px;
             background: rgba(0, 0, 0, 0.5);
             transition: all 0.34s ease;
 
-            @media screen and (max-width:1060px) {
+            @include respond(tablet){
                 font-size: 7px;
                 line-height: 1.2;
             }
@@ -572,42 +774,30 @@ $gridSmallHeight: 70px;
         }
 
         &.humoqCol-0 {
-            grid-row: 2/4;
-            grid-column: 1/3;
-
-            @media screen and (max-width:1800px) {
-                grid-row: inherit;
-                grid-column: inherit;
+            @include gridRowCol(2, 4, 1, 3);
+            @include respond(desktopWide){
+                @include gridRowCol(inherit, inherit, inherit, inherit);
             }
         }
 
         &.humoqCol-1 {
-            grid-row: 6/8;
-            grid-column: 1/3;
-
-            @media screen and (max-width:1800px) {
-                grid-row: inherit;
-                grid-column: inherit;
+            @include gridRowCol(6, 8, 1, 3);
+            @include respond(desktopWide){
+                @include gridRowCol(inherit, inherit, inherit, inherit);
             }
         }
 
         &.humoqCol-2 {
-            grid-row: 2/4;
-            grid-column: 15/17;
-
-            @media screen and (max-width:1800px) {
-                grid-row: inherit;
-                grid-column: inherit;
+            @include gridRowCol(2, 4, 15, 17);
+            @include respond(desktopWide){
+                @include gridRowCol(inherit, inherit, inherit, inherit);
             }
         }
 
         &.humoqCol-3 {
-            grid-row: 6/8;
-            grid-column: 15/17;
-
-            @media screen and (max-width:1800px) {
-                grid-row: inherit;
-                grid-column: inherit;
+            @include gridRowCol(6, 8, 15, 17);
+            @include respond(desktopWide){
+                @include gridRowCol(inherit, inherit, inherit, inherit);
             }
         }
 
@@ -621,6 +811,10 @@ $gridSmallHeight: 70px;
         background: #0279dc;
         padding-bottom: 50px;
         box-shadow: 0px 0px 4px 2px rgb(0 0 0 / 20%);
+
+        @include respond(mobileWide){
+            border-radius: 15px;
+        }
 
         iframe.fullscreen{
             position: fixed;
@@ -658,6 +852,11 @@ $gridSmallHeight: 70px;
             justify-content: space-between;
             align-items: center;
             overflow: hidden;
+
+            @include respond(mobile){
+                height: 58px;
+            }
+
             .ifiLeft{
                 display: flex;
                 padding-left: 10px;
@@ -679,7 +878,7 @@ $gridSmallHeight: 70px;
                     padding-left: 5px;
                     font-size: 10px;
                     width: 300px;
-                    @media screen and (max-width:700px) {
+                    @include respond(mobileWide){
                         width: 220px;
                     }
                 }
@@ -694,7 +893,7 @@ $gridSmallHeight: 70px;
                     display: flex;
                     margin-left: 20px;
                     cursor: pointer;
-                    @media screen and (max-width:700px) {
+                    @include respond(mobileWide){
                         margin-left: 0;
                     }
                 }
@@ -702,14 +901,14 @@ $gridSmallHeight: 70px;
                     display: flex;
                     margin: 0 5px;
                     cursor: pointer;
-                    @media screen and (max-width:700px) {
+                    @include respond(mobileWide){
                         display: none;
                     }
                 }
             }
         }
 
-        @media screen and (max-width:1400px) {
+        @include respond(desktop){
             iframe {
                 width: 100%;
                 height: auto;
@@ -717,51 +916,98 @@ $gridSmallHeight: 70px;
         }
 
         &.humoqCol-Iframe {
-            grid-row: 1 / 8;
-            grid-column: 3 / 15;
-
-            @media screen and (max-width:1800px) {
-                grid-row: 1/7;
-                grid-column: 2/12;
+            @include gridRowCol(1, 8, 3, 15);
+            @include respond(desktopWide){
+                @include gridRowCol(1, 7, 2, 12);
+            }
+            @include respond(desktop){
+                @include gridRowCol(1, 6, 1, 10);
             }
 
-            @media screen and (max-width:1400px) {
-                grid-row: 1/6;
-                grid-column: 1/11;
+            @include respond(tablet){
+                @include gridRowCol(1, 5, 1, 7);
             }
 
-            @media screen and (max-width:1060px) {
-                grid-row: 1/5;
-                grid-column: 1/8;
+            @include respond(mobileWide){
+                @include gridRowCol(2, 6, 1, 5);
             }
 
-            @media screen and (max-width:700px) {
-                grid-row: 1/5;
-                grid-column: 1/5;
+            @include respond(mobile){
+                @include gridRowCol(2, 5, 1, 4);
             }
 
+        }
 
+        .mobilePlayButton{
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            align-items: center;
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+            &.false{
+                display: none;
+            }
+            @include respond(mobileWide){
+                display: flex;
+            }
+            .bgOpacity{
+                z-index: 0;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                left: 0;
+                top: 0;
+                background-color: rgba(0, 0, 0, 0.4);
+            }
+            .mobilePlayIcon{
+                z-index: 1;
+                display: inline-block;
+                width: 100%;
+                text-align: center;
+            }
+            .mobilePlay{
+                z-index: 1;
+                display: inline-block;
+                width: 100%;
+                text-align: center;
+                color: #fff;
+                font-size: 18px;
+            }
         }
 
     }
 
     .mobileSocial{
         display: none;
-        @media screen and (max-width:700px) {
+        @include respond(mobileWide){
             display: flex;
             justify-content: center;
             overflow: hidden;
             position: relative;
-            grid-row: 5/6;
-            grid-column: 1/3;
-            background: #fff;
-            border-radius: 10px;
-            border-top-left-radius: 0;
-            box-shadow: 0 3px 3px 0 rgb(0 0 0 / 25%);
-
+            justify-content: space-between;
+            flex-wrap: wrap;
+            @include gridRowCol(6, 7, 3, 5);
+            @include respond(mobile){
+                @include gridRowCol(5, 6, 2, 4);
+            }
+            .ifiHead{
+                display: inline-block;
+                width: 100%;
+                color: #fff;
+                font-size: 12px;
+                text-align: center;
+                padding-top: 12px;
+            }
             .ifiSocial{
                 display: flex;
-                padding: 3px 2px 0 2px;
+                padding: 3px 3px 0 3px;
+                svg path{
+                    fill: #005ed0;
+                }
             }
         }
     }
@@ -781,7 +1027,7 @@ $gridSmallHeight: 70px;
         color: #005ed0;
         font-size: 24px;
         line-height: 200%;
-        @media screen and (max-width:700px) {
+        @include respond(mobileWide){
             font-size: 18px;
         }
     }
@@ -789,7 +1035,7 @@ $gridSmallHeight: 70px;
         font-size: 14px;
         color: #343434;
         line-height: 200%;
-        @media screen and (max-width:700px) {
+        @include respond(mobileWide){
             font-size: 12px;
         }
     }
@@ -815,7 +1061,7 @@ $gridSmallHeight: 70px;
         background: #0279dc;
         box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.20);
 
-        @media screen and (max-width:700px) {
+        @include respond(mobileWide){
             width: 80px;
             height: 80px;
         }
@@ -839,7 +1085,7 @@ $gridSmallHeight: 70px;
             background: rgba(0, 0, 0, 0.5);
             transition: all 0.34s ease;
 
-            @media screen and (max-width:1060px) {
+            @include respond(tablet){
                 font-size: 7px;
                 line-height: 1.2;
             }
@@ -894,7 +1140,7 @@ $gridSmallHeight: 70px;
             cursor: pointer;
         }
 
-        @media screen and (max-width:1024px) {
+        @include respond(tablet){
             display: flex;
         }
     }
@@ -903,7 +1149,7 @@ $gridSmallHeight: 70px;
         width: 955px;
     }
 
-    @media screen and (max-width:1024px) {
+    @include respond(tablet){
         &.DrawerHolderActive {
             width: 100%;
         }
@@ -923,7 +1169,7 @@ $gridSmallHeight: 70px;
     .DrawerRightContent {
         padding: 30px 100px;
 
-        @media screen and (max-width:1024px) {
+        @include respond(tablet){
             padding: 30px;
         }
     }
@@ -932,7 +1178,7 @@ $gridSmallHeight: 70px;
         position: relative;
         height: 100%;
 
-        @media screen and (max-width:700px) {
+        @include respond(mobileWide){
             overflow: auto;
         }
         
@@ -950,7 +1196,7 @@ $gridSmallHeight: 70px;
             background-position: center;
             background-repeat: no-repeat;
 
-            @media screen and (max-width:1024px) {
+            @include respond(tablet){
                 display: none;
             }
         }
@@ -973,7 +1219,7 @@ $gridSmallHeight: 70px;
         opacity: 1;
     }
 
-    @media screen and (max-width:1024px) {
+    @include respond(tablet){
         display: none;
     }
 }
@@ -985,7 +1231,7 @@ $gridSmallHeight: 70px;
         color: #fff;
         font-size: 20px;
         margin: 50px 0 10px 0;
-        @media screen and (max-width:1060px) {
+        @include respond(tablet){
             font-size: 16px;
         }
     }
@@ -1029,7 +1275,7 @@ $gridSmallHeight: 70px;
                 border-bottom-right-radius: 10px;
                 transition: all 0.34s ease;
 
-                @media screen and (max-width:700px) {
+                @include respond(mobileWide){
                     font-size: 11px;
                 }
 

@@ -1,8 +1,8 @@
 import { useEffect, useState, useRef } from "react";
-import { useRouter } from "next/router";
 import Drawer from "./Drawer/Drawer";
 import { server } from "../config";
 import { injectIntl } from 'react-intl';
+import Menu from '../components/Menu'
 
 const useOnClickOutside = (ref, handler) => {
     useEffect(
@@ -24,37 +24,6 @@ const useOnClickOutside = (ref, handler) => {
         [ref, handler]
     );
 }
-
-const LINKS = [
-    {
-        url: '/category/shooting',
-        id: 'SHOOTING'
-    },
-    {
-        url: '/category/arcade',
-        id: 'ARCADE'
-    },
-    {
-        url: '/category/racing',
-        id: 'RACING'
-    },
-    {
-        url: '/category/girls',
-        id: 'GIRLS'
-    },
-    {
-        url: '/category/sports',
-        id: 'SPORTS'
-    },
-    {
-        url: '/category/action',
-        id: 'ACTION'
-    },
-    {
-        url: '/category/adventure',
-        id: 'ADVENTURE'
-    }
-]
 
 const ALL_LINKS = [
     {
@@ -164,9 +133,6 @@ function Header({ intl }) {
     const [recent, setRecent] = useState(null);
     const [searchValue, setSearchValue] = useState(null);
 
-    const router = useRouter();
-    const categoryId = router?.query?.id;
-
     useEffect(() => {
         setRecent(JSON.parse(localStorage.getItem('recent')))
     }, [])
@@ -273,11 +239,7 @@ function Header({ intl }) {
                         <div className="humoqLogo">
                             <a href="/"><img src="/logo.png" width="280" height="83.5" alt="Humoq" /></a>
                         </div>
-                        <ul className="humoqMenu">
-                            {LINKS.map(val => (
-                                <a className={categoryId === val?.id?.toLowerCase() ? 'humoqActiveMenu' : null} key={val?.url} href={val?.url}><li>{intl?.formatMessage({ id: val?.id })}</li></a>
-                            ))}
-                        </ul>
+                        <Menu />
                     </div>
                     <ul className="humoqSearch">
                         <li><a href="/"><div className="icon-home"></div></a></li>
@@ -286,11 +248,7 @@ function Header({ intl }) {
                 </div>
 
                 <div className="humoqMobileMenu">
-                    <ul className="humoqMenu">
-                        {LINKS.map(val => (
-                            <a className={categoryId === val?.id?.toLowerCase() ? 'humoqActiveMenu' : null} key={val?.url} href={val?.url}><li>{intl?.formatMessage({ id: val?.id })}</li></a>
-                        ))}
-                    </ul>
+                    <Menu />
                 </div>
 
             </div>
