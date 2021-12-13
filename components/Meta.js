@@ -1,9 +1,8 @@
 import Head from 'next/head';
 
-const Meta = ({title, keywords, description}) => { 
-    
+export default function Meta({title, keywords, description}) {    
     return (
-
+        <>
         <Head>
             <title>{title}Humoq</title>
             <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
@@ -41,6 +40,7 @@ const Meta = ({title, keywords, description}) => {
               ga('send', 'pageview');`}}></script>
 
         </Head>
+        </>
     )
 
 }
@@ -50,5 +50,3 @@ Meta.defaultProps = {
     keywords: 'arcade games, puzzle games, sports games, shooting games, adventure games, soccer games, multiplayer games', 
     description: 'Play free online games: arcade games, puzzle games, sports games, shooting games, and more.',
 }
-
-export default Meta;
