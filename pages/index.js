@@ -8,11 +8,11 @@ import Menu from '../components/Menu';
 
 export default function Index({ games }) {
     const router = useRouter();
-    const { defaultLocale } = router;
+    const { locale } = router;
     return (
         <>
-        {console.log("router:", defaultLocale)}
-        {defaultLocale === "de" ? <MetaDe /> : <Meta />}
+        {console.log("router:", locale)}
+        {locale === "de" ? <MetaDe /> : <Meta />}
         <div className="humoqRow">
             <div className="container">
                 <div className="humoqHomeWrapper">
