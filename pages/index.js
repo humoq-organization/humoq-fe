@@ -1,18 +1,15 @@
 import React from 'react';
-import { useRouter } from 'next/router'
 import { server } from '../config/index';
 import Link from 'next/link';
 import Meta from '../components/Meta';
 import MetaDe from '../components/Metade';
 import Menu from '../components/Menu';
 
-export default function Index({ games }) {
-    const router = useRouter();
-    const { locale } = router;
+export default function Index({ games, header }) {
     return (
         <>
-        {console.log("router:", locale)}
-        {locale === "de" ? <MetaDe /> : <Meta />}
+        {console.log("header:", header)}
+        <Meta />
         <div className="humoqRow">
             <div className="container">
                 <div className="humoqHomeWrapper">
@@ -32,13 +29,14 @@ export default function Index({ games }) {
     )
 }
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async (context) => {
     const res = await fetch(`${server}/summary/`)
     const games = await res.json();
-
+    console.log(context.req.headers);
     return {
         props: {
             games,
+            header: context.req.headers,
         }
     }
 
