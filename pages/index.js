@@ -3,14 +3,15 @@ import { useRouter } from 'next/router'
 import { server } from '../config/index';
 import Link from 'next/link';
 import Meta from '../components/Meta';
+import MetaDe from '../components/Metade';
 import Menu from '../components/Menu';
 
 export default function Index({ games }) {
     const router = useRouter()
     return (
         <>
-        {console.log("router:", router)}
-        <Meta />
+        {console.log("router:", router.defaultLocale)}
+        {router.defaultLocale === "de" ? <MetaDe /> : <Meta />}
         <div className="humoqRow">
             <div className="container">
                 <div className="humoqHomeWrapper">
