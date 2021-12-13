@@ -31,11 +31,11 @@ export default function Index({ games, language}) {
 export const getServerSideProps = async (context) => {
     const res = await fetch(`${server}/summary/`)
     const games = await res.json();
-    console.log(context.req.headers.host)
+    console.log(context.defaultLocale)
     return {
         props: {
             games,
-            language: context.req.headers.host,
+            language: context.defaultLocale,
         }
     }
 
