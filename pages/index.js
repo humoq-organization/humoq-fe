@@ -8,7 +8,7 @@ export default function Index({ games }) {
     const router = useRouter();
     return (
         <>
-        {console.log(router)}
+        {console.log("locale log", router.defaultLocale, router)}
         { router.defaultLocale === "de" ? <MetaDe /> : <Meta /> }
         <div className="humoqRow">
             <div className="container">
