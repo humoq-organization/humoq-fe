@@ -4,10 +4,11 @@ import Link from 'next/link';
 import Meta from '../components/Meta';
 import Menu from '../components/Menu';
 
-export default function Index({ games, language}) {
+export default function Index({ games, referer, url}) {
     return (
         <>
-        {console.log(language)}
+        {console.log("ref:", referer)}
+        {console.log("url:", url)}
         <Meta />
         <div className="humoqRow">
             <div className="container">
@@ -31,11 +32,13 @@ export default function Index({ games, language}) {
 export const getServerSideProps = async (context) => {
     const res = await fetch(`${server}/summary/`)
     const games = await res.json();
-    console.log(context.locale)
+    console.log(context.req.headers.referer)
+    console.log(context.req.url)
     return {
         props: {
             games,
-            language: context.locale,
+            referer: context.req.headers.referer,
+            url: context.req.url,
         }
     }
 
