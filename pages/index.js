@@ -9,7 +9,7 @@ export default function Index({ games }) {
     return (
         <>
         {console.log(router)}
-        { router.locale === "de" ? <MetaDe /> : <Meta /> }
+        { router.defaultLocale === "de" ? <MetaDe /> : <Meta /> }
         <div className="humoqRow">
             <div className="container">
                 <div className="humoqHomeWrapper">
