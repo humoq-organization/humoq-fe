@@ -1,14 +1,15 @@
 import React from 'react';
+import { useRouter } from 'next/router'
 import { server } from '../config/index';
 import Link from 'next/link';
 import Meta from '../components/Meta';
 import Menu from '../components/Menu';
 
-export default function Index({ games, referer, url}) {
+export default function Index({ games }) {
+    const router = useRouter()
     return (
         <>
-        {console.log("ref:", referer)}
-        {console.log("url:", url)}
+        {console.log("router:", router)}
         <Meta />
         <div className="humoqRow">
             <div className="container">
@@ -29,16 +30,13 @@ export default function Index({ games, referer, url}) {
     )
 }
 
-export const getServerSideProps = async (context) => {
+export const getServerSideProps = async () => {
     const res = await fetch(`${server}/summary/`)
     const games = await res.json();
-    console.log(context.req.headers.referer)
-    console.log(context.req.url)
+
     return {
         props: {
             games,
-            referer: context.req.headers.referer,
-            url: context.req.url,
         }
     }
 
