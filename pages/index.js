@@ -1,14 +1,11 @@
 import React from 'react';
 import { server } from '../config/index';
-import Link from 'next/link';
 import Meta from '../components/Meta';
-import MetaDe from '../components/Metade';
 import Menu from '../components/Menu';
 
-export default function Index({ games, header }) {
+export default function Index({ games }) {
     return (
         <>
-        {console.log("header:", header)}
         <Meta />
         <div className="humoqRow">
             <div className="container">
@@ -29,20 +26,13 @@ export default function Index({ games, header }) {
     )
 }
 
-export const getServerSideProps = async (context) => {
+export const getServerSideProps = async () => {
     const res = await fetch(`${server}/summary/`)
     const games = await res.json();
-    const deneme = {
-        "reqUrl":context.req.url,
-        "resolvedUrl": context.resolvedUrl,
-        "locale": context.locale,
-        "defaultLocale": context.defaultLocale,
-    }
-    console.log(context);
+
     return {
         props: {
             games,
-            header: deneme,
         }
     }
 

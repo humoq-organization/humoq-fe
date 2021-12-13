@@ -1,9 +1,12 @@
 import Head from 'next/head';
-import { useRouter } from 'next/router'
+import { injectIntl } from 'react-intl';
 
-const Meta = ({title, keywords, description}) => { 
-    const router = useRouter();
-    
+
+
+
+const Meta = ({title, keywords, description, intl}) => { 
+    const GA = intl.formatMessage({id: 'GA'});
+
     return (
 
         <Head>
@@ -39,7 +42,7 @@ const Meta = ({title, keywords, description}) => {
               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
               })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
     
-              ga('create', 'UA-19330065-1', 'auto');
+              ga('create', '${GA}', 'auto');
               ga('send', 'pageview');`}}></script>
 
         </Head>
@@ -53,4 +56,4 @@ Meta.defaultProps = {
     description: 'Play free online games: arcade games, puzzle games, sports games, shooting games, and more.',
 }
 
-export default Meta;
+export default injectIntl(Meta);
