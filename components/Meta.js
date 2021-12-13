@@ -6,7 +6,7 @@ import { injectIntl } from 'react-intl';
 
 const Meta = ({title, keywords, description, intl}) => { 
     const GA = intl.formatMessage({id: 'GA'});
-
+    console.log(GA);
     return (
 
         <Head>
