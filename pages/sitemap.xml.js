@@ -2,16 +2,16 @@ import React from "react";
 import { server } from '../config/index';
 import { useRouter } from 'next/router'
 
-// Languages
-const languages = {
-  en: require('../locale/en.json'),
-  de: require('../locale/de.json')
-}
 const sitemapXml = data => {
+  // Languages
+  const languages = {
+    en: require('../locale/en.json'),
+    de: require('../locale/de.json')
+  }
   let projectsXML = "";
   const router = useRouter();
-  const { locale } = router;
-  const domain = languages[locale].DOMAIN;
+  const { defaultLocale } = router;
+  const domain = languages[defaultLocale].DOMAIN;
   data.map(post => {
     const projectURL = `https://${domain}/game/${post.slug}`;
     projectsXML += `

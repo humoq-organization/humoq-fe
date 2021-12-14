@@ -1,15 +1,15 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router'
-// Languages
-const languages = {
-    en: require('../locale/en.json'),
-    de: require('../locale/de.json')
-}
 function Meta({title, keywords, description}) {  
+    // Languages
+    const languages = {
+        en: require('../locale/en.json'),
+        de: require('../locale/de.json')
+    }
     const router = useRouter();
-    const { locale } = router;
-    const GA = languages[locale].GA;
-    console.log('router', router, locale);
+    const { defaultLocale } = router;
+    const GA = languages[defaultLocale].GA;
+    console.log('router', router, defaultLocale);
     return (
         <>
         <Head>
