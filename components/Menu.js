@@ -60,11 +60,11 @@ function Menu({ intl }) {
         const selectRemove = document.querySelectorAll(".sports");
         if (installable === true) {
             selectRemove.forEach((select) => {
-                select.style.display = "none"
+                select.classList.add("hide")
             });
         } else {
             selectRemove.forEach((select) => {
-                select.style.display = "block"
+                select.classList.remove("hide")
             });
         }
     }, [installable])

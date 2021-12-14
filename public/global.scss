@@ -465,6 +465,12 @@ ul li {
 .humoqMenu .buttonDownload {
     &.mobile{
         display: none;
+        @include respond(mobileWide){
+            display: block;
+        }
+    }
+    @include respond(mobileWide){
+        display: none;
     }
     li {
         color: #fff;
