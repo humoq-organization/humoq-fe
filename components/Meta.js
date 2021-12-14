@@ -1,6 +1,15 @@
 import Head from 'next/head';
-
-export default function Meta({title, keywords, description}) {    
+import { useRouter } from 'next/router'
+// Languages
+const languages = {
+    en: require('../locale/en.json'),
+    de: require('../locale/de.json')
+}
+function Meta({title, keywords, description}) {  
+    const router = useRouter();
+    const { locale } = router;
+    const GA = languages[locale].GA;
+    console.log('router', router, locale);
     return (
         <>
         <Head>
@@ -36,7 +45,7 @@ export default function Meta({title, keywords, description}) {
               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
               })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
     
-              ga('create', 'UA-19330065-1', 'auto');
+              ga('create', '${GA}', 'auto');
               ga('send', 'pageview');`}}></script>
 
         </Head>
@@ -50,3 +59,5 @@ Meta.defaultProps = {
     keywords: 'arcade games, puzzle games, sports games, shooting games, adventure games, soccer games, multiplayer games', 
     description: 'Play free online games: arcade games, puzzle games, sports games, shooting games, and more.',
 }
+
+export default Meta;
