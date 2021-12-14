@@ -17,7 +17,9 @@ $screen-desktopWide: 1920px;
 $screen-desktop: 1440px;
 $screen-tablet: 1080px;
 $screen-mobileWide: 768px;
+$screen-mobileMedium: 640px;
 $screen-mobile: 500px;
+$screen-mobileSmall: 400px;
 
 /*normal*/
 $gridWidth: 100px;
@@ -38,20 +40,26 @@ $gridDGtc: $gridMediumWidth $gridMediumWidth $gridMediumWidth $gridMediumWidth $
 
 /*screen-tablet*/
 $gridColLowMediumScreen: 6;
-$gridLowMediumWidth: 95px;
-$gridLowMediumHeight: 95px;
+$gridLowMediumWidth: 100px;
+$gridLowMediumHeight: 100px;
 $gridTGtc: $gridLowMediumWidth $gridLowMediumWidth $gridLowMediumWidth $gridLowMediumWidth $gridLowMediumWidth $gridLowMediumWidth;
 
 /*screen-mobileWide*/
 $gridColSmallScreen: 4;
-$gridSmallWidth: 90px;
-$gridSmallHeight: 90px;
+$gridSmallWidth: 105px;
+$gridSmallHeight: 105px;
 $gridMwGtc: $gridSmallWidth $gridSmallWidth $gridSmallWidth $gridSmallWidth;
+
+/*screen-mobileMedium*/
+$gridColSmallMediumScreen: 4;
+$gridSmallMediumWidth: 95px;
+$gridSmallMediumHeight: 95px;
+$gridMwMGtc: $gridSmallMediumWidth $gridSmallMediumWidth $gridSmallMediumWidth $gridSmallMediumWidth;
 
 /*screen-mobile*/
 $gridColSmallMiniScreen: 3;
-$gridSmallMiniWidth: 90px;
-$gridSmallMiniHeight: 90px;
+$gridSmallMiniWidth: 92px;
+$gridSmallMiniHeight: 92px;
 $gridMGtc: $gridSmallMiniWidth $gridSmallMiniWidth $gridSmallMiniWidth;
 
 /*END MEDIA SCREEN VARIABLES*/
@@ -80,8 +88,18 @@ $gridMGtc: $gridSmallMiniWidth $gridSmallMiniWidth $gridSmallMiniWidth;
             @content;
         }
     }
+    @if $media==mobileMedium {
+        @media only screen and (max-width: $screen-mobileMedium) {
+            @content;
+        }
+    }
     @if $media==mobile {
         @media only screen and (max-width: $screen-mobile) {
+            @content;
+        }
+    }
+    @if $media==mobileSmall {
+        @media only screen and (max-width: $screen-mobileSmall) {
             @content;
         }
     }
@@ -238,6 +256,7 @@ ul li {
             }
 
         }
+
     }
 
     .humoqMobileMenu {
@@ -270,6 +289,8 @@ ul li {
                 justify-content: left;
             }
         }
+        
+
     }
 
     .humoqSearch {
@@ -345,6 +366,10 @@ ul li {
         width: ($gridSmallWidth * $gridColSmallScreen) + ($gridGap * $gridColSmallScreen) - $gridGap;
     }
 
+    @include respond(mobileMedium){
+        width: ($gridSmallMediumWidth * $gridColSmallMediumScreen) + ($gridGap * $gridColSmallMediumScreen) - $gridGap;
+    }
+
     @include respond(mobile){
         width: ($gridSmallMiniWidth * $gridColSmallMiniScreen) + ($gridGap * $gridColSmallMiniScreen) - $gridGap;
     }
@@ -359,7 +384,7 @@ ul li {
     }
 
     &.menuDetail{
-        @include gridRowCol(6, 9, 1, 3);
+        @include gridRowCol(6, 9, 1, 2);
 
         @include respond(mobile){
             @include gridRowCol(5, 8, 1, 2);    
@@ -379,6 +404,12 @@ ul li {
 
             @include respond(mobile){
                 @include gridRowCol(inherit, inherit, inherit, inherit);    
+            }
+            .humoqMenu .buttonDownload li{
+                padding-left: 32px;
+                &::before{
+                    right: 11px;
+                }
             }
        }
 
@@ -406,6 +437,18 @@ ul li {
         transition: all 0.34s ease;
         box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.25);
 
+        @include respond(mobileWide){
+            margin-bottom: 14px;
+        }
+
+        @include respond(mobileMedium){
+            margin-bottom: 9px;
+        }
+
+        @include respond(mobile){
+            margin-bottom: 7px;
+        }
+
         &:hover {
             background: #00459c;
             color: #fff;
@@ -419,10 +462,72 @@ ul li {
     }
 }
 
+.humoqMenu .buttonDownload {
+    &.mobile{
+        display: none;
+    }
+    li {
+        color: #fff;
+        background: url(icon-download.png) #f34a87 no-repeat center left 10px !important;
+        background-size: 26.5px 25px !important;
+        padding-left: 45px;
+        cursor: pointer;
+        transition: none;
+        @include respond(desktopWide){
+            background-size: 22.5px 21px !important;
+            padding-left: 40px;
+        }
+        @include respond(mobileWide){
+            background-size: 20.5px 19px !important;
+            background-position-x: 7px !important;
+            word-break: break-all;
+            padding-left: 36px;
+            padding-right: 18px;
+            text-align: left;
+        }
+        @include respond(mobileMedium){
+            padding-left: 33px;
+            padding-right: 16px;
+        }
+        @include respond(mobile){
+            padding-left: 32px;
+            padding-right: 14px;
+        }
+        &::before{
+            content: "";
+            position: absolute;
+            width: 5px;
+            height: 2px;
+            background: #fff;
+            right: 6px;
+            top: 50%;
+            transform: translateY(-50%);
+            margin-top: -7px;
+            display: none;
+            @include respond(mobileWide){
+                display: block;
+                right: 15px;
+            }
+            @include respond(mobileMedium){
+                right: 10px;
+            }
+            @include respond(mobile){
+                right: 8px;
+            }
+        }
+    }
+}
+
 .mobileCategoryScope{
     @include respond(mobileWide){
         width: 100%;
         padding-left: 110px;
+        margin-top: -365px;
+    }
+    @include respond(mobileMedium){
+        margin-top: -330px;
+    }
+    @include respond(mobile){
         margin-top: -310px;
     }
     .humoqTitle{
@@ -458,6 +563,11 @@ ul li {
     @include respond(mobileWide){
         grid-template-columns: $gridMwGtc;
         grid-auto-rows: $gridSmallHeight;
+    }
+
+    @include respond(mobileMedium){
+        grid-template-columns: $gridMwMGtc;
+        grid-auto-rows: $gridSmallMediumHeight;
     }
 
     @include respond(mobile){
@@ -1328,4 +1438,8 @@ ul li {
             vertical-align: middle;
         }
     }
+}
+
+.hide{
+    display: none !important;
 }
