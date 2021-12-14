@@ -57,10 +57,15 @@ function Menu({ intl }) {
     }, []);
 
     useEffect(() => {
+        const selectRemove = document.querySelectorAll(".sports");
         if (installable === true) {
-            document.getElementsByClassName('sports')[0].style.display = 'none';
+            selectRemove.forEach((select) => {
+                select.style.display = "none"
+            });
         } else {
-            document.getElementsByClassName('sports')[0].style.display = 'block';
+            selectRemove.forEach((select) => {
+                select.style.display = "block"
+            });
         }
     }, [installable])
 
