@@ -71,7 +71,7 @@ export default function Detail({ game }) {
 
     return (
         <>
-            <Meta title={`${game?.detail?.title} - `} description={`${game?.detail?.description?.substring(0, 130)}...`} url={`https://humoq.${(router.defaultLocale == "en") ? "com" : "de"}${router.asPath}`} image={(game?.detail?.title === "Hot Dog Bush") ? game?.detail?.images[3] : game?.detail?.images[0]} />
+            <Meta title={`${game?.detail?.title} - `} description={`${game?.detail?.description?.substring(0, 130)}...`} image={(game?.detail?.title === "Hot Dog Bush") ? game?.detail?.images[3] : game?.detail?.images[0]} />
             <div className="humoqRow">
                 <div className="container">
                     <div className="humoqHomeWrapper humoqDetailsWrapper">

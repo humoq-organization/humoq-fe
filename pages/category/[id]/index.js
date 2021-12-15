@@ -16,7 +16,7 @@ function Category({ games, category, intl }) {
 
     return (
         <>
-            <Meta title={`${category.toUpperCase()} - `} url={`https://humoq.${(router.defaultLocale == "en") ? "com" : "de"}${router.asPath}`} image={`https://humoq.${(router.defaultLocale == "en") ? "com" : "de"}/facebook.jpg`} />
+            <Meta title={`${category.toUpperCase()} - `} image={`https://humoq.${(router.defaultLocale == "en") ? "com" : "de"}/facebook.jpg`} />
             <div className="humoqRow">
                 <div className="container">
                     <div className='mobileHomeMenu menuCategory'>
