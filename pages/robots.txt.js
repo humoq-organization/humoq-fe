@@ -6,7 +6,9 @@ class Robots extends React.Component {
 
 res.setHeader("Content-Type", "text/plain");
 res.write(`User-agent: *
-Allow: / `);
+Allow: / 
+
+Sitemap: https://humoq.com/sitemap.xml`);
 
 res.end();
 
