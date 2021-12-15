@@ -8,7 +8,7 @@ export default function Index({ games }) {
     const router = useRouter();
     return (
         <>
-        <Meta />
+        <Meta url={`https://humoq.${(router.defaultLocale == "en") ? "com" : "de"}/`} image={`https://humoq.${(router.defaultLocale == "en") ? "com" : "de"}/facebook.jpg`} />
         <div className="humoqRow">
             <div className="container">
                 <div className="humoqHomeWrapper">

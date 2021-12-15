@@ -1,19 +1,22 @@
 import { server } from '../../../config/index';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router'
 import Meta from '../../../components/Meta';
 import Menu from '../../../components/Menu';
 import { injectIntl } from 'react-intl';
 
 function Category({ games, category, intl }) {
     const [recent, setRecent] = useState(null);
+    const router = useRouter();
+
     useEffect(() => {
         setRecent(JSON.parse(localStorage.getItem('recent')))
     }, [])
 
     return (
         <>
-            <Meta title={`${category.toUpperCase()} - `} />
+            <Meta title={`${category.toUpperCase()} - `} url={`https://humoq.${(router.defaultLocale == "en") ? "com" : "de"}${router.asPath}`} image={`https://humoq.${(router.defaultLocale == "en") ? "com" : "de"}/facebook.jpg`} />
             <div className="humoqRow">
                 <div className="container">
                     <div className='mobileHomeMenu menuCategory'>
