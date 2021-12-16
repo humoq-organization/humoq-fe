@@ -9,7 +9,7 @@ function Meta({title, keywords, description, url, image}) {
     const router = useRouter();
     const { defaultLocale } = router;
     const GA = languages[defaultLocale].GA;
-    console.log('router', router, defaultLocale);
+
     return (
         <>
         <Head>
@@ -19,6 +19,7 @@ function Meta({title, keywords, description, url, image}) {
             <meta name='description' content={description} />
             <meta charSet='utf-8' />
 
+            <meta property="og:url" content={url} />
             <meta property="og:type" content="article" />
             <meta property="og:title" content={`${title}Humoq`} />
             <meta property="og:description" content={description} />
@@ -63,6 +64,8 @@ Meta.defaultProps = {
     title: '', 
     keywords: 'arcade games, puzzle games, sports games, shooting games, adventure games, soccer games, multiplayer games', 
     description: 'Play free online games: arcade games, puzzle games, sports games, shooting games, and more.',
+    url: 'https://humoq.com/',
+    image: 'https://humoq.com/facebook.jpg'
 }
 
 export default Meta;

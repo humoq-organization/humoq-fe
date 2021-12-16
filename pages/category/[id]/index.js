@@ -16,7 +16,7 @@ function Category({ games, category, intl }) {
 
     return (
         <>
-            <Meta title={`${category.toUpperCase()} - `} image={`https://humoq.${(router.defaultLocale == "en") ? "com" : "de"}/facebook.jpg`} />
+            <Meta title={`${category.toUpperCase()} - `} />
             <div className="humoqRow">
                 <div className="container">
                     <div className='mobileHomeMenu menuCategory'>
@@ -29,7 +29,7 @@ function Category({ games, category, intl }) {
                                 <div className="humoqBasicWrapper">
                                     {recent?.map((val) => (
                                         <a key={val?.slug} href={`/game/${val?.slug}`} className="humoqColBasic">
-                                            <img alt={val?.title} src={(val?.title === "Hot Dog Bush") ? val?.images[3] : val?.images[0]} width="auto" height="100%" />
+                                            <img alt={val?.title} src={val?.thumbnail} width="auto" height="100%" />
                                             <div className="humoqText">{val?.title}</div>
                                         </a>
                                     ))}
@@ -42,7 +42,7 @@ function Category({ games, category, intl }) {
                             <div className="humoqBasicWrapper">
                                 {games?.map((game, i) => (
                                     <a key={i} href={`/game/${game?.slug}/`} className="humoqColBasic">
-                                        <img alt={game?.title} src={(game?.title === "Hot Dog Bush") ? game?.images[3] : game?.images[0]} width="auto" height="100%" />
+                                        <img alt={game?.title} src={game?.thumbnail} width="auto" height="100%" />
                                         <div className="humoqText">{game?.title}</div>
                                     </a>
                                 ))}

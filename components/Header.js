@@ -210,7 +210,7 @@ function Header({ intl }) {
                             <div className="humoqBasicWrapper">
                                 {data?.map((val) => (
                                     <a key={val?.slug} href={`/game/${val?.slug}`} onClick={closeDrawer} className="humoqColBasic">
-                                        <img alt={val?.title} src={(val?.title === "Hot Dog Bush") ? val?.images[3] : val?.images[0]} width="auto" height="100%" />
+                                        <img alt={val?.title} src={val?.thumbnail} width="auto" height="100%" />
                                         <div className="humoqText">{val?.title}</div>
                                     </a>
                                 ))}
@@ -221,7 +221,7 @@ function Header({ intl }) {
                     <div className="humoqBasicWrapper">
                         {recent?.map((val) => (
                             <a key={val?.slug} href={`/game/${val?.slug}`} onClick={() => setDrawerState(false)} className="humoqColBasic">
-                                <img alt={val?.title} src={(val?.title === "Hot Dog Bush") ? val?.images[3] : val?.images[0]} width="auto" height="100%" />
+                                <img alt={val?.title} src={val?.thumbnail} width="auto" height="100%" />
                                 <div className="humoqText">{val?.title}</div>
                             </a>
                         ))}

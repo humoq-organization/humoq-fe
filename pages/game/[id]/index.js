@@ -71,7 +71,7 @@ export default function Detail({ game }) {
 
     return (
         <>
-            <Meta title={`${game?.detail?.title} - `} description={`${game?.detail?.description?.substring(0, 130)}...`} image={(game?.detail?.title === "Hot Dog Bush") ? game?.detail?.images[3] : game?.detail?.images[0]} />
+            <Meta title={`${game?.detail?.title} - `} description={`${game?.detail?.description?.substring(0, 130)}...`} image={game?.detail?.image} url={`https://humoq.com${router.asPath}`} />
             <div className="humoqRow">
                 <div className="container">
                     <div className="humoqHomeWrapper humoqDetailsWrapper">
@@ -80,7 +80,7 @@ export default function Detail({ game }) {
                             <div id="iframeClose" className="iframeClose" onClick={closeFullScreen}></div>
                             <div className="iframeInfo">
                                 <div className="ifiLeft">
-                                    <span className="ifiGameImage"><img alt={game?.detail?.title} src={(game?.detail?.title === "Hot Dog Bush") ? game?.detail?.images[3] : game?.detail?.images[0]} width="auto" height="100%" /></span>
+                                    <span className="ifiGameImage"><img alt={game?.detail?.title} src={game?.detail?.thumbnail} width="auto" height="100%" /></span>
                                     <span className="ifiGameText">{game?.detail?.title}</span>
                                 </div>
                                 <div className="ifiRight">
@@ -100,14 +100,14 @@ export default function Detail({ game }) {
                                     </WhatsappShareButton>
                                     </div>
                                     <div className="ifiPinterest ifiSocial">
-                                    <PinterestShareButton url={`https://humoq.${(router.defaultLocale == "en") ? "com" : "de"}${router.asPath}`} media={game?.detail?.images[1]} >
+                                    <PinterestShareButton url={`https://humoq.${(router.defaultLocale == "en") ? "com" : "de"}${router.asPath}`} media={game?.detail?.image} >
                                         <PinterestIcon size={37} round bgStyle={{fill: "#005ed0"}} />
                                     </PinterestShareButton>
                                     </div>
                                     <div className="ifiFullScreen" onClick={openFullscreen}><img src="/icon-fullscreen.png" width="35" height="35" /></div>
                                 </div>
                             </div>
-                            <div id="mobilePlay" className='mobilePlayButton' onClick={openMobileFullscreen} style={{backgroundImage: `url("${(game?.detail?.title === "Hot Dog Bush") ? game?.detail?.images[3] : game?.detail?.images[0]}")`}}>
+                            <div id="mobilePlay" className='mobilePlayButton' onClick={openMobileFullscreen} style={{backgroundImage: `url("${game?.detail?.image}")`}}>
                                 <div className='bgOpacity'></div>
                                 <div className='mobilePlay'><span className='mobilePlayIcon'><img src='/icon-playbutton.png' width="70" height="70" /></span>Play Now</div>
                             </div>
@@ -133,14 +133,14 @@ export default function Detail({ game }) {
                             </WhatsappShareButton>
                             </div>
                             <div className="ifiPinterest ifiSocial">
-                            <PinterestShareButton url={`https://humoq.${(router.defaultLocale == "en") ? "com" : "de"}${router.asPath}`} media={game?.detail?.images[1]} >
+                            <PinterestShareButton url={`https://humoq.${(router.defaultLocale == "en") ? "com" : "de"}${router.asPath}`} media={game?.detail?.image} >
                                 <PinterestIcon size={40} round bgStyle={{fill: "#ffffff"}} />
                             </PinterestShareButton>
                             </div>
                         </div>
                         {game.categories?.map((game, i) => (
                             <a key={i} href={`/game/${game?.slug}/`} className={"humoqColDetails humoqCol-" + i}>
-                                <img alt={game?.title} src={(game?.title === "Hot Dog Bush") ? game?.images[3] : game?.images[0]} width="auto" height="100%" />
+                                <img alt={game?.title} src={(i <= 3) ? game.image : game.thumbnail} width="auto" height="100%" />
                                 <div className="humoqText">{game?.title}</div>
                             </a>
                         ))}
